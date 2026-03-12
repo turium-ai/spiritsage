@@ -103,6 +103,42 @@ gcloud config set project [YOUR_PROJECT_ID]
 
 ---
 
+## 🧪 Testing & Verification
+
+We have included several reproducible tests to verify the core logic of the SpiritSage engine.
+
+### 1. Automated Search Engine Test
+Verify the fuzzy matching and recommendation logic for complex queries (e.g., "Full-Bodied Wine"):
+```bash
+# From the root directory
+node test_recommend_wine.mjs
+```
+*Expected: A console output showing a list of 24 filtered wine recommendations with specific scores.*
+
+### 2. Semantic Intent Discovery
+Test the on-device Transformers.js integration for concept-based searches (e.g., "mexican night"):
+```bash
+node testSemantic.mjs
+```
+*Expected: High-confidence similarity matches for Tequila and Mezcal entries.*
+
+### 3. Live API Connectivity
+Verify that the backend can successfully bridge to the Gemini Multimodal Live API:
+```bash
+# Check the health endpoint of the live production server
+curl https://spiritsage-backend-447843351231.us-central1.run.app/health
+```
+
+### 4. Manual Barge-In Verification
+To verify the "Interruption Robustness" judging criterion:
+1. Open the Live Demo.
+2. Click the **Microphone** to start a session.
+3. Ask: "Tell me about a very complex, peaty Scotch."
+4. **Interrupt** the AI while it's mid-sentence by saying "Wait, what about something cheaper?"
+5. **Observed Result**: The audio should cut off **instantly** (within ~100ms) due to our local RMS-based VAD logic.
+
+---
+
 ## 🛠️ Core Stack
 - **AI**: Gemini 2.0 Flash (Multimodal Live API)
 - **Frontend**: React, Vite, Lucide-React
