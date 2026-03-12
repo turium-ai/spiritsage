@@ -20,6 +20,8 @@ SpiritSage is a next-generation AI-powered liquor recommendation app built for t
 
 ## 🧠 Technical Architecture
 
+![SpiritSage Architecture](docs/architecture.png)
+
 ### 1. Hybrid Search Architecture
 SpiritSage utilizes a dual-engine approach:
 - **Levenshtein Fuzzy Matching**: Handles direct brand searches and typos.
