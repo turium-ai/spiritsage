@@ -1,0 +1,152 @@
+[
+    {
+        "name": "Tito's Handmade Vodka 1.75L (80 Proof)",
+        "price": "$26.99",
+        "style": "Vodka",
+        "description": "Tito’s Handmade Vodka is an unflavored, low-calorie vodka that is naturally gluten-free with zero carbs and zero sugars. Crafted in old-fashioned pot stills, inspired by the distillation methods of fine single malt scotches and high-end French cognacs. Distilled six times for an impeccably clean finish."
+    },
+    {
+        "name": "Ketel One Vodka 1.75L (80 Proof)",
+        "price": "$32.99",
+        "style": "Vodka",
+        "description": "Ketel One Premium Vodka - Inspired By Small Batch Craftsmanship. A crisp, sophisticated vodka with a long finish."
+    },
+    {
+        "name": "Tito's Handmade Vodka 750ml (80 Proof)",
+        "price": "$17.99",
+        "style": "Vodka",
+        "description": "The same high-quality Tito’s in a 750ml bottle. Naturally gluten-free, crafted in Austin, Texas from corn and distilled six times in pot stills."
+    },
+    {
+        "name": "Jameson Irish Whiskey 750ml (80 proof)",
+        "price": "$22.99",
+        "style": "Whiskey",
+        "description": "Light floral fragrances and rich vanilla spices balance out the sweetness. Jameson is perfect straight up or in any whiskey cocktail."
+    },
+    {
+        "name": "Bombay Sapphire Gin 1.75L (94 Proof)",
+        "price": "$33.99",
+        "style": "Gin",
+        "description": "Extraordinary smoothness and perfectly balanced taste. Discover a world-class gin with 10 hand-selected botanicals from around the globe."
+    },
+    {
+        "name": "Jack Daniel's Old No. 7 Tennessee Whiskey 1.75L (80 Proof)",
+        "price": "$36.99",
+        "style": "Whiskey",
+        "description": "Charcoal mellowed drop by drop through 10 feet of sugar maple charcoal, then matured in handcrafted barrels. A smooth, best-in-class whiskey."
+    },
+    {
+        "name": "Clase Azul Reposado Tequila 750ml (80 Proof)",
+        "price": "$159.99",
+        "style": "Tequila",
+        "description": "Masterfully aged for eight months in American whiskey casks. Imparts unique hazelnut and vanilla flavors with an exceptionally smooth finish. Iconic hand-painted decanter."
+    },
+    {
+        "name": "Casamigos Blanco Tequila 750ml (80 Proof)",
+        "price": "$44.99",
+        "style": "Tequila",
+        "description": "A crystal-clear tequila with crisp notes of citrus, vanilla, and sweet agave. Long, smooth finish with vibrant grapefruit and fruit-forward flavors."
+    },
+    {
+        "name": "Don Julio 70 Cristalino Tequila 750ml (80 Proof)",
+        "price": "$84.99",
+        "style": "Tequila",
+        "description": "The world’s first añejo claro tequila. Robust character with highlights of vanilla, honey, and toasted oak. Combines the smoothness of a blanco with the complexity of an añejo."
+    },
+    {
+        "name": "Don Julio 1942 Anejo Tequila 750ml (80 Proof)",
+        "price": "$179.99",
+        "style": "Tequila",
+        "description": "Celebrated in exclusive bars worldwide. Handcrafted in small batches, aged for at least two and a half years. Rich complexity with notes of caramel, toffee, and vanilla."
+    },
+    {
+        "name": "Bulleit Bourbon Whiskey 1.75 L (90 Proof)",
+        "price": "$51.99",
+        "style": "Whiskey",
+        "description": "Especially high rye content gives it a bold, spicy character with a clean finish. Gentle spiciness and sweet oak aromas with tones of maple and nutmeg."
+    },
+    {
+        "name": "Jameson Irish Whiskey 1.75L (80 Proof)",
+        "price": "$42.99",
+        "style": "Whiskey",
+        "description": "Silky smooth Irish whiskey known for its balance and accessibility. Floral nose with spicy wood and sweet sherry notes."
+    },
+    {
+        "name": "Bulleit Bourbon Whiskey 750ml (90 Proof)",
+        "price": "$26.99",
+        "style": "Whiskey",
+        "description": "Small batch Kentucky bourbon with a high rye content. Subtly spiced and oaky with a long, dry, satiny finish."
+    },
+    {
+        "name": "Don Julio Blanco Tequila 750ml (80 Proof)",
+        "price": "$42.99",
+        "style": "Tequila",
+        "description": "Fresh citrus taste and sweetness. Meticulously distilled in copper-lined pot stills to ensure a distinctive, crisp flavor profile."
+    },
+    {
+        "name": "Tanqueray London Dry Gin, 1.75 L (94.6 Proof)",
+        "price": "$36.99",
+        "style": "Gin",
+        "description": "Expertly crafted recipe with juniper, coriander, angelica, and licorice. A perfectly balanced, award-winning spirit with a dry finish."
+    },
+    {
+        "name": "Grey Goose Vodka 750ml (80 Proof)",
+        "price": "$27.99",
+        "style": "Vodka",
+        "description": "Unrivaled quality and taste. Clear, fresh, and elegant floral aroma with a subtle citrus note and a silky, smooth finish."
+    },
+    {
+        "name": "Aperol Aperitivo Liqueur 750ml (22 Proof)",
+        "price": "$28.99",
+        "style": "Liqueur",
+        "description": "The perfect aperitivo with a bright orange color and a unique bitter-sweet taste from a secret recipe of oranges, herbs, and roots."
+    },
+    {
+        "name": "Cointreau Orange Liqueur Triple Sec 750ml (80 Proof)",
+        "price": "$33.99",
+        "style": "Liqueur",
+        "description": "Iconic orange liqueur essential for margaritas. Heart of 500+ celebrated cocktails with exceptional citrus aroma and fresh taste."
+    },
+    {
+        "name": "Patron Silver Tequila 750ml (80 Proof)",
+        "price": "$40.99",
+        "style": "Tequila",
+        "description": "Crystal clear, ultra-premium tequila. Smooth and sweet with a light pepper finish and aromas of fruit and citrus."
+    },
+    {
+        "name": "Skyy Vodka 1.75L (80 Proof)",
+        "price": "$20.99",
+        "style": "Vodka",
+        "description": "Gluten-free, quadruple distilled and triple filtered. Clean, crisp taste that is perfect for mixing or on the rocks."
+    },
+    {
+        "name": "Baileys Original Irish Cream Liqueur 750 mL (34 Proof)",
+        "price": "$19.99",
+        "style": "Liqueur",
+        "description": "World's number one Irish cream liqueur. Perfect blend of fine Irish whiskey, dairy cream, chocolate, and vanilla flavors."
+    },
+    {
+        "name": "Maker's Mark Bourbon 750ml (90 Proof)",
+        "price": "$24.99",
+        "style": "Whiskey",
+        "description": "Full-flavored, yet remarkably easy to drink. Subtly woody with flavors of vanilla, caramel, and fruit, crafted with red winter wheat."
+    },
+    {
+        "name": "Hennessy VS Cognac 750ml (80 proof)",
+        "price": "$42.99",
+        "style": "Cognac",
+        "description": "Aged oak flavor with fruity notes. Bold and robust, ideal for enjoying straight or in sophisticated cocktails."
+    },
+    {
+        "name": "Casamigos Reposado Tequila 750ml (80 Proof)",
+        "price": "$46.99",
+        "style": "Tequila",
+        "description": "Honey-colored with rich aromas of caramel and cocoa. Silky texture with a smooth finish, aged for seven months in premium oak."
+    },
+    {
+        "name": "LALO Blanco Tequila 750ml (80 Proof)",
+        "price": "$42.99",
+        "style": "Tequila",
+        "description": "Truest and purest spirit on Earth. No barrels or additives, presenting the taste of the finest agave from the Jalisco highlands."
+    }
+]

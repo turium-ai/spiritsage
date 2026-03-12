@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Macallan Double Cask 12 Yr",
+    "category": "Whisky",
+    "price": 103.49,
+    "currency": "USD",
+    "lastUpdated": "2026-02-14"
+  },
+  {
+    "id": 2,
+    "name": "Hendrick's Gin",
+    "category": "Gin",
+    "price": 40.49,
+    "currency": "USD",
+    "lastUpdated": "2026-02-14"
+  },
+  {
+    "id": 3,
+    "name": "Don Julio 1942 Anejo",
+    "category": "Tequila",
+    "price": 174.99,
+    "currency": "USD",
+    "lastUpdated": "2026-02-14"
+  },
+  {
+    "id": 4,
+    "name": "Veuve Clicquot Yellow Label",
+    "category": "Wine",
+    "price": 69.99,
+    "currency": "USD",
+    "lastUpdated": "2026-02-14"
+  },
+  {
+    "id": 5,
+    "name": "Lagavulin 16 Year Old",
+    "category": "Whisky",
+    "price": 112.99,
+    "currency": "USD",
+    "lastUpdated": "2026-02-14"
+  },
+  {
+    "id": 6,
+    "name": "Grey Goose Vodka",
+    "category": "Spirit",
+    "price": 39.49,
+    "currency": "USD",
+    "lastUpdated": "2026-02-14"
+  },
+  {
+    "id": 7,
+    "name": "Cote des Roses Provence",
+    "category": "Wine",
+    "price": 18.29,
+    "currency": "USD",
+    "lastUpdated": "2026-02-14"
+  },
+  {
+    "id": 8,
+    "name": "Chimay Blue Trappist Ale",
+    "category": "Beer",
+    "price": 14.99,
+    "currency": "USD",
+    "lastUpdated": "2026-02-14"
+  }
+]

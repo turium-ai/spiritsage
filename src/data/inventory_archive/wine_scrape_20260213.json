@@ -1,0 +1,152 @@
+[
+    {
+        "name": "La Marca Prosecco 750ml",
+        "price": "$19.49",
+        "style": "Prosecco",
+        "description": "La Marca Prosecco Sparkling Wine is crisp and refreshing with a golden straw color and lively bubbles. This luxurious Prosecco wine features aromas of fresh citrus, honey and white flowers, with fresh, clean flavors of ripe lemon, green apple and grapefruit. Lively and versatile, La Marca sparkling..."
+    },
+    {
+        "name": "Unruly Cabernet Sauvignon 750ml",
+        "price": "$11.99",
+        "style": "Cabernet Sauvignon",
+        "description": "Feeling wild? This Cab isn’t afraid of a little fun. With swirling aromas of black peppercorn, violet and blackberry, this California silver medal winner has a bold tannin structure and generous finish. Flavors of spice, black fruit compote, and mischief."
+    },
+    {
+        "name": "Unruly Sauvignon Blanc 750ml",
+        "price": "$11.99",
+        "style": "Sauvignon Blanc",
+        "description": "A Sauvignon Blanc that's begging you to run away with it. Dripping in playful aromas of lemon-lime, guava and honeydew and flavors of nectarines, passion fruit and lime. Well-balanced with crisp acidity and a zesty finish."
+    },
+    {
+        "name": "Veuve Clicquot Yellow Label Brut Champagne 750ml",
+        "price": "$72.29",
+        "style": "Champagne",
+        "description": "Veuve Clicquot is a French Champagne House based in Reims, founded in 1772 by Philippe Clicquot. In 1805, Barbe-Nicole Ponsardin took over the family business after being widowed at the young age of 27. She is credited with transforming Veuve Clicquot into one of the greatest Champagne Houses in the..."
+    },
+    {
+        "name": "Francis Coppola Director's Central Coast Chardonnay 750ml",
+        "price": "$17.99",
+        "style": "Chardonnay",
+        "description": "Very fragrant and juicy with an exotic perfume of melon, fig, tangerine and plumeria flowers followed by succulent flavors of peaches, pineapple, and spices that fold into a butterscotch finish."
+    },
+    {
+        "name": "Cuvee 89 Brut 750ml",
+        "price": "$19.99",
+        "style": "Wine",
+        "description": "This classic sparkling brut provides an exquisite sensory experience with vibrant ultra-fine bubbles whispering, generous notes of grapefruit and green apple, and a luminous golden tone."
+    },
+    {
+        "name": "Unruly Chardonnay 750ml",
+        "price": "$11.99",
+        "style": "Chardonnay",
+        "description": "Channel your inner wild child with this California GOLD medal winner (2018). A cheeky Chardonnay packed with citrus aromas and flavors of lemon, honeydew, green apple and toasty oak. How can you resist a finish as rich and balanced as this one?"
+    },
+    {
+        "name": "Unruly Red Blend 750ml",
+        "price": "$11.99",
+        "style": "Red Blend",
+        "description": "The clock strikes midnight. Enter: a wicked Red Blend California bronze medal winner. Bathe in the aromas of black cherry, vanilla, and jam. Savor the flavors of spice and dark fruit. Smooth tannins with a juicy, lingering finish."
+    },
+    {
+        "name": "Kendall Jackson Vintners Reserve Chardonnay 750ml",
+        "price": "$15.99",
+        "style": "Chardonnay",
+        "description": "As America’s number one selling Chardonnay for almost 28 years, the Kendall-Jackson Vintner's Reserve Chardonnay is trusted for its quality and craftsmanship. This flagship white wine highlights the vivid fruit flavors from cool coastal vineyards. This California chardonnay is crafted boutique-winer..."
+    },
+    {
+        "name": "Donovan-Parke Pinot Noir 750ml",
+        "price": "$17.49",
+        "style": "Pinot Noir",
+        "description": "2022 SFC SILVER (2024), 2021 SFC BRONZE (2023), 2021 SFC SILVER (2022), 2021 LA W&S SILVER (2023). The Pinot Noir has great purity, serving up sour plums and wild strawberries; lively on the palate and bright in the finish."
+    },
+    {
+        "name": "Rombauer Chardonnay 750ml",
+        "price": "$45.29",
+        "style": "Chardonnay",
+        "description": "2021 Not yet rated 2020 Not yet rated 2019 90 James Suckling Flood your palate with juicy, tropical fruit and soft spice notes followed by vanilla and toasty oak. Pair with a light pasta. *Ratings will vary by vintage. Vintage dependent upon availability"
+    },
+    {
+        "name": "Navigator Napa Valley Cabernet Sauvignon 750ml",
+        "price": "$24.99",
+        "style": "Cabernet Sauvignon",
+        "description": "Set sail on the dark and dense seas of Navigator Cabernet Sauvignon. This fruit-forward cabernet is intense and enveloped in soft, ripe tannins that lead to a beautifully balanced finish. Aromas of cassis, plum, anise and just the right amount of toasty spice and vanilla."
+    },
+    {
+        "name": "Daou Vineyards Cabernet Sauvignon 750ml",
+        "price": "$27.59",
+        "style": "Cabernet Sauvignon",
+        "description": "2021 Not yet rated2020 90 Jeb Dunnuck2019 92 Wine AdvocateHas heady aromatics that affirm this is a serious wine for serious wine lovers.*Ratings will vary by vintage. Vintage dependent upon availability"
+    },
+    {
+        "name": "Cuvee 89 Sparkling Rose 750ml",
+        "price": "$19.99",
+        "style": "Sparkling",
+        "description": "An eloquent sparkling rosé boasting floral aromas and ripe strawberry flavors. Finishes with a round, zesty acidity – best served with a slight chill."
+    },
+    {
+        "name": "Tributus Paso Robles Cabernet Sauvignon 750ml",
+        "price": "$28.49",
+        "style": "Cabernet Sauvignon",
+        "description": "'22 VINTAGE SILVER AWARD, 88 POINTS - CALIFORNIA STATE FAIR 2025. Gravel, sand, silt and clay soils create the classic hallmarks of the Paso Robles appellation. Dark purple color, cherry, plum and black currant fruit aromas and flavors."
+    },
+    {
+        "name": "Encore Monterey Pinot Noir 750ml",
+        "price": "$21.99",
+        "style": "Pinot Noir",
+        "description": "2017 VINTAGE ONLY; DOUBLE GOLD, SF CHRONICLE WINE COMP '20- Aromas of bing cherry, smoke, with a layer of minerals; rich and well textured on the palate, offering ripe plum and sweet oak in the finish"
+    },
+    {
+        "name": "Donovan-Parke Chardonnay 750ml",
+        "price": "$18.49",
+        "style": "Chardonnay",
+        "description": "2022 SFC GOLD (2024), 2021 SFC GOLD (2023), 2021 LA W&S GOLD (2023). Alive and bursting with fruit, this youthful Chardonnay is bright and lasting on the palate; rich, yet crisp in the finish."
+    },
+    {
+        "name": "Dolce Vita Italy Sparkling Prosecco 750ml",
+        "price": "$39.49",
+        "style": "Prosecco",
+        "description": "Fruity scents of pear, green apple and floral citrus note. The flavors exhibit crisp green apples and summer white peaches."
+    },
+    {
+        "name": "Kim Crawford Sauvignon Blanc 750ml",
+        "price": "$20.49",
+        "style": "Sauvignon Blanc",
+        "description": "2021 93 Tasting Panel 2020 91 Wine Enthusiast 2019 90 Wine Enthusiast Kim Crawford’s best-selling Sauvignon Blanc is the product of sustainable harvesting practices in the Marlborough region of New Zealand..."
+    },
+    {
+        "name": "Unruly Pinot Grigio 750ml",
+        "price": "$11.99",
+        "style": "Pinot Grigio",
+        "description": "A Pinot Grigio as whimsical as dusk. Tropical notes of honeysuckle, apricot and white peach. Flavors of nectarine, juicy citrus and honeydew. Crisp yet balanced acidity with a rounded mouthfeel and medium body."
+    },
+    {
+        "name": "Donovan-Parke Cabernet Sauvignon 750ml",
+        "price": "$18.49",
+        "style": "Cabernet Sauvignon",
+        "description": "2022 SFC SILVER (2024), 2021 SFC BRONZE (2023), 2021 LA W&S SILVER (2023). With aromas of black cherry, hints of vanilla and toasty oak, and a silky finish, our Cabernet Sauvignon was crafted to carries through..."
+    },
+    {
+        "name": "Josh Cellars Cabernet Sauvignon 750ml",
+        "price": "$16.99",
+        "style": "Cabernet Sauvignon",
+        "description": "2019 91 Wine Enthusiast JOSH CELLARS CABERNET SAUVIGNON *Ratings will vary by vintage. Vintage dependent upon availability"
+    },
+    {
+        "name": "Unruly Dark Red 750ml",
+        "price": "$15.49",
+        "style": "Wine",
+        "description": "Through the darkness of the night shines the silhouette of the unruliest dark red blend known to Unruly-kind. You’re drawn to the alluring scent of black cherry and spice, and the notes of rich mocha and blackberry call out your name."
+    },
+    {
+        "name": "Encore Cabernet Sauvignon 750ml",
+        "price": "$19.49",
+        "style": "Cabernet Sauvignon",
+        "description": "Opulent aromas of blackberry and elegant warm spice, with concentrated flavors of bing cherry and mocha, complimented with a firm structure to the last sip."
+    },
+    {
+        "name": "Unruly Rampant Black Cabernet Sauvignon 750ml",
+        "price": "$19.95",
+        "style": "Cabernet Sauvignon",
+        "description": "A darkly naughty Black Cab featuring flavors of dense blackberries and bold spices wrap around your senses. Let loose a little - we won’t tell."
+    }
+]

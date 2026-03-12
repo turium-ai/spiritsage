@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+dist/
+build/
+.vercel
+.netlify
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Scratch / Temp files
+test_*.mjs
+test_*.js
+run_eval*
+prompt_*.txt
+*.ods
+*.mjs.ods
+inventory_backup.json
+server/data/temp/

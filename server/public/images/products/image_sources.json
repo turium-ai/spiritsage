@@ -1,0 +1,696 @@
+{
+    "description": "Source URLs for all product images scraped from official brand websites",
+    "lastUpdated": "2026-02-21",
+    "brands": {
+        "Barefoot": {
+            "website": "https://www.barefootwine.com/wines",
+            "images": [
+                {
+                    "file": "barefoot_cabernet_sauvignon.png",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dw288f4f2c/Our%20Wines%20-%202025/Red%20Wine/cab-sauv-750ml.png"
+                },
+                {
+                    "file": "barefoot_pinot_noir.png",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dwc6a21526/Our%20Wines%20-%202025/Red%20Wine/pinot-noir-750ml.png"
+                },
+                {
+                    "file": "barefoot_merlot.png",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dw36299ce9/Our%20Wines%20-%202025/Red%20Wine/merlot-750ml.png"
+                },
+                {
+                    "file": "barefoot_red_moscato.png",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dw47d40fce/Our%20Wines%20-%202025/Red%20Wine/red-moscato-750ml.png"
+                },
+                {
+                    "file": "barefoot_malbec.png",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dw1a240f47/Our%20Wines%20-%202025/Red%20Wine/malbec-539-2000.png"
+                },
+                {
+                    "file": "barefoot_sangria.jpg",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dw0ed587a1/Our%20Wines%20-%202025/Red%20Wine/sangria-539-2000.jpg"
+                },
+                {
+                    "file": "barefoot_pinot_grigio.jpg",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dwdfbfaaf0/2025%20Refresh/White%20Wine%20Page/BFC_PinotGrigio_750ml.jpg"
+                },
+                {
+                    "file": "barefoot_chardonnay.jpg",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dwbeb95108/2025%20Refresh/White%20Wine%20Page/BFC_Chardonnay_750ml.jpg"
+                },
+                {
+                    "file": "barefoot_moscato.jpg",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dw263fb05d/2025%20Refresh/White%20Wine%20Page/BFC_Moscato_750ml.jpg"
+                },
+                {
+                    "file": "barefoot_sauvignon_blanc.jpg",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dw91da7a1a/2025%20Refresh/White%20Wine%20Page/BFC_SauvBlanc_750ml.jpg"
+                },
+                {
+                    "file": "barefoot_riesling.jpg",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dwf74a1d17/2025%20Refresh/White%20Wine%20Page/BFC_Riesling_750ml.jpg"
+                },
+                {
+                    "file": "barefoot_pink_moscato.jpg",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dw09c99690/2025%20Refresh/Sweet%20Wine%20Page/BFC_PinkMoscato_750ml.jpg"
+                },
+                {
+                    "file": "barefoot_white_zinfandel.png",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dweb3f4169/Our%20Wines%20-%202025/Pink%20Wine/BFC_White_Zin_750ml.png"
+                },
+                {
+                    "file": "barefoot_rose.png",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dw905e5ff2/Our%20Wines%20-%202025/Pink%20Wine/BFC_Rose_750ml.png"
+                },
+                {
+                    "file": "barefoot_cabernet.png",
+                    "sourceUrl": "https://www.barefootwine.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-barefoot-Library/default/dw288f4f2c/Our%20Wines%20-%202025/Red%20Wine/cab-sauv-750ml.png"
+                }
+            ]
+        },
+        "Yellow Tail": {
+            "website": "https://www.yellowtailwine.com/wines/",
+            "images": [
+                {
+                    "file": "yellow_tail_moscato.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USMoscato-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_pinot_grigio.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USPinotGrigio-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_sauvignon_blanc.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USSavB-570x640px-1.png"
+                },
+                {
+                    "file": "yellow_tail_chardonnay.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USChard-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_pinot_noir.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USPinotNoir-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_sangria.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USSangira-570x640px-1.png"
+                },
+                {
+                    "file": "yellow_tail_buttery_chardonnay.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USButtChard-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_merlot.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USMerlot-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_malbec.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/AUMalbec-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_shiraz.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USShiraz-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_cabernet_sauvignon.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USCabSav-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_big_bold_red.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USBBR-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_rose.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/AURose-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_cabernet_merlot.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/USCabMerlot-570x640px.png"
+                },
+                {
+                    "file": "yellow_tail_prosecco.png",
+                    "sourceUrl": "https://www.yellowtailwine.com/wp-content/uploads/formidable/6/PR-570x640px.png"
+                }
+            ]
+        },
+        "Sutter Home": {
+            "website": "https://www.sutterhome.com/our-wines",
+            "images": [
+                {
+                    "file": "sutter_home_cabernet_sauvignon.png",
+                    "sourceUrl": "https://marvel-b1-cdn.bc0a.com/f00000000255487/www.sutterhome.com/wp-content/uploads/2017/08/SHW-NV2021-CS-Front-Bottle-HR-80x300.png"
+                },
+                {
+                    "file": "sutter_home_merlot.png",
+                    "sourceUrl": "https://marvel-b1-cdn.bc0a.com/f00000000255487/www.sutterhome.com/wp-content/uploads/2023/08/SHW-NV2022-ME-Front-Bottle-LR-85x300.png"
+                },
+                {
+                    "file": "sutter_home_red_moscato.png",
+                    "sourceUrl": "https://marvel-b1-cdn.bc0a.com/f00000000255487/www.sutterhome.com/wp-content/uploads/2023/08/SHW-NV2022-RMC-Front-Bottle-LR-85x300.png"
+                },
+                {
+                    "file": "sutter_home_chardonnay.png",
+                    "sourceUrl": "https://marvel-b1-cdn.bc0a.com/f00000000255487/www.sutterhome.com/wp-content/uploads/2017/08/SHW-NV2021-CH-Front-Bottle-LR-80x300.png"
+                },
+                {
+                    "file": "sutter_home_moscato.png",
+                    "sourceUrl": "https://marvel-b1-cdn.bc0a.com/f00000000255487/www.sutterhome.com/wp-content/uploads/2017/08/SHW-NV2021-MC-Front-Bottle-HR-80x300.png"
+                },
+                {
+                    "file": "sutter_home_pinot_grigio.png",
+                    "sourceUrl": "https://marvel-b1-cdn.bc0a.com/f00000000255487/www.sutterhome.com/wp-content/uploads/2017/08/SHW-NV2021-PG-Front-Bottle-LR-80x300.png"
+                },
+                {
+                    "file": "sutter_home_sauvignon_blanc.png",
+                    "sourceUrl": "https://marvel-b1-cdn.bc0a.com/f00000000255487/www.sutterhome.com/wp-content/uploads/2023/08/SHW-NV2022-SB-Front-Bottle-LR-85x300.png"
+                },
+                {
+                    "file": "sutter_home_white_zinfandel.png",
+                    "sourceUrl": "https://marvel-b1-cdn.bc0a.com/f00000000255487/www.sutterhome.com/wp-content/uploads/2017/08/SHW-NV2021-WZ-Front-Bottle-LR-80x300.png"
+                },
+                {
+                    "file": "sutter_home_pink_moscato.png",
+                    "sourceUrl": "https://marvel-b1-cdn.bc0a.com/f00000000255487/www.sutterhome.com/wp-content/uploads/2017/08/SHW-NV2021-PMC-Front-Bottle-HR-80x300.png"
+                },
+                {
+                    "file": "sutter_home_white_merlot.png",
+                    "sourceUrl": "https://marvel-b1-cdn.bc0a.com/f00000000255487/www.sutterhome.com/wp-content/uploads/2023/08/SHW-NV2022-WM-1_5L-Front-Bottle-LR-103x300.png"
+                }
+            ]
+        },
+        "Johnnie Walker": {
+            "website": "https://www.johnniewalker.com/en-us/our-whisky/",
+            "images": [
+                {
+                    "file": "johnnie_walker_black.webp",
+                    "sourceUrl": "https://images.ctfassets.net/waruwpig3jxu/55BPOqOreCU44edDswoigY/153eae9e783bce07830134d161a349b3/black-750ml_producthero_fullfront_desktop.webp"
+                },
+                {
+                    "file": "johnnie_walker_double_black.webp",
+                    "sourceUrl": "https://images.ctfassets.net/waruwpig3jxu/2KL8hhvxPn9bpLV8gKjV1z/f13bd58df6728c69941feeb303081a6b/producthero_halffront_desktop.webp"
+                },
+                {
+                    "file": "johnnie_walker_red.webp",
+                    "sourceUrl": "https://images.ctfassets.net/waruwpig3jxu/5uXjsPl0sDoZ1CeA4DN20Q/abb26f986ba5e919d9231b99c3b4c02d/red-750ml_producthero_fullfront_desktop.webp"
+                },
+                {
+                    "file": "johnnie_walker_green.webp",
+                    "sourceUrl": "https://images.ctfassets.net/waruwpig3jxu/2FimeF3LI1PbHRVWUkG6OC/8ce45e78054bd470698c3b4673c890a6/producthero_fullfront_desktop__750ml.webp"
+                },
+                {
+                    "file": "johnnie_walker_gold.png",
+                    "sourceUrl": "https://images.ctfassets.net/waruwpig3jxu/41Pn5CAp9j5LGIG5lkskFg/5fd7aadfb738abbb9b3f385206f1976a/1-ProductDetail-02.png"
+                },
+                {
+                    "file": "johnnie_walker_blue.avif",
+                    "sourceUrl": "https://images.ctfassets.net/waruwpig3jxu/1mDb1GoHH0RwOoLZeeRyRu/8f84ddb44319f604030c08f02cb1b231/Blue_Label_Front_transparent_bottle.avif"
+                },
+                {
+                    "file": "johnnie_walker_18.avif",
+                    "sourceUrl": "https://images.ctfassets.net/waruwpig3jxu/3DeASJkvbI8jVuk6j9Envh/b626e0581c8dda7d6cf186136f066841/Johnnie_Walker_18YO_088076181366_750ml_Front1.avif"
+                },
+                {
+                    "file": "johnnie_walker_high_rye.webp",
+                    "sourceUrl": "https://images.ctfassets.net/waruwpig3jxu/4x1rwnYyCO5bF866NiSjI1/1b393064b55b1a81fca5ecde30515ac9/johnnie-walker-high-rye_front.webp"
+                },
+                {
+                    "file": "johnnie_walker_blonde.webp",
+                    "sourceUrl": "https://images.ctfassets.net/waruwpig3jxu/7AdXxOnAeOIgzH9SU7Bl2z/00142a974cd951999c9a32e6ba1ba625/blonde-750ml_producthero_fullfront_desktop.webp"
+                }
+            ]
+        },
+        "Corona": {
+            "website": "https://www.coronausa.com/products",
+            "images": [
+                {
+                    "file": "corona_extra.png",
+                    "sourceUrl": "https://www.coronausa.com/cdn/shop/files/corona-extra-menu_300x.png"
+                },
+                {
+                    "file": "corona_light.png",
+                    "sourceUrl": "https://www.coronausa.com/cdn/shop/files/corona-light-menu_300x.png"
+                },
+                {
+                    "file": "corona_premier.png",
+                    "sourceUrl": "https://www.coronausa.com/cdn/shop/files/corona-premier-menu_9d7284e1-db2e-40e2-9689-2c2bca6935fb_300x.png"
+                },
+                {
+                    "file": "corona_familiar.png",
+                    "sourceUrl": "https://www.coronausa.com/cdn/shop/files/corona-familiar-menu_300x.png"
+                },
+                {
+                    "file": "corona_sunbrew.png",
+                    "sourceUrl": "https://www.coronausa.com/cdn/shop/files/Corona-Sunbrew-180x548_300x.png"
+                }
+            ]
+        },
+        "Heineken": {
+            "website": "https://www.heineken.com/us/en/our-products",
+            "images": [
+                {
+                    "file": "heineken_original.jpg",
+                    "sourceUrl": "https://www.heineken.com/media/kyfjeqvf/heineken_og-copy.jpg"
+                },
+                {
+                    "file": "heineken_silver.jpg",
+                    "sourceUrl": "https://www.heineken.com/media/wrshhldp/heineken_silver.jpg"
+                },
+                {
+                    "file": "heineken_0_0.jpg",
+                    "sourceUrl": "https://www.heineken.com/media/yvnpxvvb/heineken_0-0.jpg"
+                },
+                {
+                    "file": "heineken_light.jpg",
+                    "sourceUrl": "https://www.heineken.com/media/vxihposx/heineken_light.jpg"
+                }
+            ]
+        },
+        "Patron": {
+            "website": "https://www.patrontequila.com/our-products.html",
+            "images": [
+                {
+                    "file": "patron_silver.jpg",
+                    "sourceUrl": "https://www.patrontequila.com/binaries/content/gallery/patrontequila/products/patron-silver/2025_plp_silver.jpg"
+                },
+                {
+                    "file": "patron_reposado.jpg",
+                    "sourceUrl": "https://www.patrontequila.com/binaries/content/gallery/patrontequila/products/patron-reposado/2025_plp_repo.jpg"
+                },
+                {
+                    "file": "patron_anejo.jpg",
+                    "sourceUrl": "https://www.patrontequila.com/binaries/content/gallery/patrontequila/products/patron-anejo/2025_plp_anejo.jpg"
+                },
+                {
+                    "file": "patron_extra_anejo.jpg",
+                    "sourceUrl": "https://www.patrontequila.com/binaries/content/gallery/patrontequila/products/patron-extra-anejo/2025_plp_extraanejo.jpg"
+                },
+                {
+                    "file": "patron_xo_cafe.jpg",
+                    "sourceUrl": "https://www.patrontequila.com/binaries/content/gallery/patrontequila/products/xo-cafe/v3/product-card.jpg"
+                },
+                {
+                    "file": "patron_citronge.jpg",
+                    "sourceUrl": "https://www.patrontequila.com/binaries/content/gallery/patrontequila/products/citronge-orange/patron-citronge-orange-card.jpg"
+                }
+            ]
+        },
+        "White Claw": {
+            "website": "https://www.whiteclaw.com/flavors",
+            "images": [
+                {
+                    "file": "white_claw_black_cherry.avif",
+                    "sourceUrl": "https://www.whiteclaw.com/wp-content/uploads/2025/02/ZxDzqYF3NbkBXrL3_BlackCherry.avif"
+                },
+                {
+                    "file": "white_claw_mango.png",
+                    "sourceUrl": "https://www.whiteclaw.com/wp-content/uploads/2025/02/product-hs-original-mango.png"
+                },
+                {
+                    "file": "white_claw_peach.png",
+                    "sourceUrl": "https://www.whiteclaw.com/wp-content/uploads/2025/04/product-hs-original-peach.png"
+                },
+                {
+                    "file": "white_claw_watermelon.png",
+                    "sourceUrl": "https://www.whiteclaw.com/wp-content/uploads/2025/04/product-hs-original-watermelon.png"
+                },
+                {
+                    "file": "white_claw_raspberry.avif",
+                    "sourceUrl": "https://www.whiteclaw.com/wp-content/uploads/2025/07/ZxDzsIF3NbkBXrMA_Raspberry.avif"
+                },
+                {
+                    "file": "white_claw_strawberry.avif",
+                    "sourceUrl": "https://www.whiteclaw.com/wp-content/uploads/2025/07/ZxDzsoF3NbkBXrMD_StrawBerry.avif"
+                },
+                {
+                    "file": "white_claw_natural_lime.avif",
+                    "sourceUrl": "https://www.whiteclaw.com/wp-content/uploads/2025/05/ZxDzrIF3NbkBXrL7_NaturalLime.avif"
+                },
+                {
+                    "file": "white_claw_surge.png",
+                    "sourceUrl": "https://www.whiteclaw.com/wp-content/uploads/2025/05/product-hs-surge-blood-orange.png"
+                }
+            ]
+        },
+        "Modelo": {
+            "website": "https://www.modelousa.com/",
+            "images": [
+                {
+                    "file": "modelo_especial.png",
+                    "sourceUrl": "https://www.modelousa.com/cdn/shop/files/especial.gif"
+                }
+            ]
+        },
+        "Budweiser": {
+            "website": "https://www.budweiser.com/",
+            "images": [
+                {
+                    "file": "budweiser.png",
+                    "sourceUrl": "https://cdn.builder.io/api/v1/image/assets%2F2c2f396d58f344ecaa467593ed0ec411%2Fb0d1af3c504a49289a8676b636dd1871"
+                }
+            ]
+        },
+        "Bud Light": {
+            "website": "https://www.budlight.com/",
+            "images": [
+                {
+                    "file": "bud_light.png",
+                    "sourceUrl": "https://cdn.builder.io/api/v1/image/assets%2F960a6dd36e654833ab8dd7a073f1b70b%2Fa9afaf84eedd404fa65abfc666e0287d"
+                }
+            ]
+        },
+        "Smirnoff": {
+            "website": "https://www.smirnoff.com/en-us/products/",
+            "images": [
+                {
+                    "file": "smirnoff_no_21_vodka.jpg",
+                    "sourceUrl": "https://images.ctfassets.net/tlircn1cnxbm/7Ei0PKo7FeF7ljss3RUPMP/007fb8b0ada63ea19ac6499c452fd7bf/11478211_classic-vodka-red-no-21-mobile.jpg"
+                },
+                {
+                    "file": "smirnoff_ice_original.webp",
+                    "sourceUrl": "https://images.ctfassets.net/tlircn1cnxbm/6VXejVtz8x3QZ57OXiugMX/96f973803bbc1f489c99a5d92423a271/4219059_smirnoff_fmb_website_ice_og_6pk_mb_600x900.webp"
+                }
+            ]
+        },
+        "Truly": {
+            "website": "https://www.trulyhardseltzer.com/seltzers",
+            "images": [
+                {
+                    "file": "truly_wild_berry.png",
+                    "sourceUrl": "https://www.trulyhardseltzer.com//app_media/Truly-AW/Product-Images/2026/core/wildBerry_can_SM.file"
+                },
+                {
+                    "file": "truly_pineapple.png",
+                    "sourceUrl": "https://www.trulyhardseltzer.com//app_media/Truly-AW/Product-Images/2026/core/pineapple_can_SM.file"
+                }
+            ]
+        },
+        "Carlo Rossi": {
+            "website": "https://www.carlorossi.com/",
+            "images": [
+                {
+                    "file": "carlo_rossi_sangria.png",
+                    "sourceUrl": "https://www.carlorossi.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-carlorossi-Library/default/dw392ea4e7/Sangria.png"
+                },
+                {
+                    "file": "carlo_rossi_sweet_red.png",
+                    "sourceUrl": "https://www.carlorossi.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-carlorossi-Library/default/dwa8ded629/SweetRed.png"
+                }
+            ]
+        },
+        "Dekuyper": {
+            "website": "https://www.dekuyper.com/products",
+            "images": [
+                {
+                    "file": "dekuyper_blue_curacao.png",
+                    "sourceUrl": "https://dekuyper-cdn.ams3.digitaloceanspaces.com/gallery/2019/02/De-Kuyper-Blue-Cura%C3%A7ao_96dpi_466x1024px_J_NR-5350.png"
+                },
+                {
+                    "file": "dekuyper_buttershots.png",
+                    "sourceUrl": "https://dekuyper-cdn.ams3.digitaloceanspaces.com/gallery/2019/02/De-Kuyper-Butterscotch_96dpi_450x1024px_J_NR-4948.png"
+                }
+            ]
+        },
+        "Baileys": {
+            "website": "https://www.baileys.com/en-us/products/",
+            "images": [
+                {
+                    "file": "baileys_original_irish_cream.png",
+                    "sourceUrl": "https://images.ctfassets.net/p1wk6poseifr/7MqAH3TpYr58PUynz76hxU/dfe82ded5ee3757a0bc698ce5e9553c9/BaileysOriginalIrishCream.png"
+                },
+                {
+                    "file": "baileys_chocolate.png",
+                    "sourceUrl": "https://images.ctfassets.net/p1wk6poseifr/61WtKjP2f7HHM7Rabq9xTJ/db54a1dc13c0ea3e2edac4173324e047/ProductListingBG3.png"
+                },
+                {
+                    "file": "baileys_strawberries_cream.webp",
+                    "sourceUrl": "https://images.ctfassets.net/p1wk6poseifr/5hRITWplhE5ITevGXRHW6R/a2d0740b48a3757c67f4dcfa3d9b0aa6/840x715.webp"
+                },
+                {
+                    "file": "baileys_espresso.png",
+                    "sourceUrl": "https://images.ctfassets.net/p1wk6poseifr/5dwgaJzZQ4vGeWlNYZ0X6Z/e830185e4ebd9b5228556b921d34ad73/ProductListingBG1.png"
+                }
+            ]
+        },
+        "Beringer": {
+            "website": "https://www.beringer.com/wines",
+            "images": [
+                {
+                    "file": "beringer_cabernet_sauvignon.jpg",
+                    "sourceUrl": "https://www.beringer.com/cdn/shop/files/BER_VR_PR_CabSauv_750.jpg"
+                },
+                {
+                    "file": "beringer_chardonnay.jpg",
+                    "sourceUrl": "https://www.beringer.com/cdn/shop/files/BER_VR_PR_Chard_750.jpg"
+                },
+                {
+                    "file": "beringer_pinot_noir.png",
+                    "sourceUrl": "https://www.beringer.com/cdn/shop/files/BER_Carneros_Pinot.png"
+                }
+            ]
+        },
+        "Woodbridge": {
+            "website": "https://www.woodbridgewines.com/our-wines",
+            "images": [
+                {
+                    "file": "woodbridge_cabernet_sauvignon.png",
+                    "sourceUrl": "https://woodbridgewines.com/cdn/shop/files/High-Res_PNG-Woodbridge_Cabernet_Sauvignon_750ml_Front_Bottle_Shot_2_1.png"
+                },
+                {
+                    "file": "woodbridge_chardonnay.png",
+                    "sourceUrl": "https://woodbridgewines.com/cdn/shop/files/High-Res_PNG-Woodbridge_Chardonnay_750ml_Front_Bottle_Shot_1.png"
+                },
+                {
+                    "file": "woodbridge_merlot.png",
+                    "sourceUrl": "https://woodbridgewines.com/cdn/shop/files/High-Res_PNG-Woodbridge_Merlot_750ml_2_c5e77411-d41b-4b80-939e-8d755dfcdef6_1.png"
+                },
+                {
+                    "file": "woodbridge_moscato.png",
+                    "sourceUrl": "https://woodbridgewines.com/cdn/shop/files/WebPNG-WBR_MOS_750_Bottle_FR_Final_BC.png"
+                }
+            ]
+        },
+        "Josh Cellars": {
+            "website": "https://www.joshcellars.com/wine",
+            "images": [
+                {
+                    "file": "josh_cabernet_sauvignon.png",
+                    "sourceUrl": "https://cdn.shopify.com/s/files/1/0871/2640/9530/files/jcell_cab_sauv_1x1-1670503294577_1.png"
+                },
+                {
+                    "file": "josh_chardonnay.png",
+                    "sourceUrl": "https://cdn.shopify.com/s/files/1/0871/2640/9530/files/jcell_chard_1x1-1670503463865.png"
+                },
+                {
+                    "file": "josh_pinot_noir.png",
+                    "sourceUrl": "https://cdn.shopify.com/s/files/1/0871/2640/9530/files/jcell_pn_1x1-1671201208563.png"
+                },
+                {
+                    "file": "josh_sauvignon_blanc.png",
+                    "sourceUrl": "https://cdn.shopify.com/s/files/1/0871/2640/9530/files/jcell_sb_1x1-1671199544820.png"
+                }
+            ]
+        },
+        "Don Julio": {
+            "website": "https://www.donjulio.com/our-tequilas",
+            "images": [
+                {
+                    "file": "don_julio_blanco.png",
+                    "sourceUrl": "https://images.ctfassets.net/msj5difukazp/12arUTaBIQMlbSDYngSOso/a2e8c97a0b50c762d701d20fd94f498e/Blanco"
+                },
+                {
+                    "file": "don_julio_reposado.png",
+                    "sourceUrl": "https://images.ctfassets.net/msj5difukazp/1LDAKdygeCvYfdgQaclAxI/eab46cf6ebdf4fb0f3dfe186b5edcb7f/Reposado"
+                },
+                {
+                    "file": "don_julio_anejo.png",
+                    "sourceUrl": "https://images.ctfassets.net/msj5difukazp/5BkbEqzGGyrhdtb9ZK7eYi/237ec50818ca689b743f933a05a9d51e/Anejo"
+                },
+                {
+                    "file": "don_julio_70_cristalino.png",
+                    "sourceUrl": "https://images.ctfassets.net/msj5difukazp/7sHx23rj4nXmbER3ck39ZU/ee3abaf988f733ed625ab42b341d40ad/Cristalino"
+                },
+                {
+                    "file": "don_julio_1942.png",
+                    "sourceUrl": "https://images.ctfassets.net/msj5difukazp/4Exa0fSamYVIrBgQtmjcb5/4499c1ea4ec9c8747b619cde26d21459/1942"
+                },
+                {
+                    "file": "don_julio_rosado.png",
+                    "sourceUrl": "https://images.ctfassets.net/msj5difukazp/5eZN5YmLrufp4Y0AuhHPWI/642d3f418ec24a067ee71e438709d533/rosado.png"
+                },
+                {
+                    "file": "don_julio_primavera.png",
+                    "sourceUrl": "https://images.ctfassets.net/msj5difukazp/7vKcw6fot34RfSIZm0LnG1/92e69f05ba5939b617394f074d7ef7c2/primavera.png"
+                }
+            ]
+        },
+        "Samuel Adams": {
+            "website": "https://www.samueladams.com/our-beers",
+            "images": [
+                {
+                    "file": "sam_adams_boston_lager.png",
+                    "sourceUrl": "https://www.samueladams.com//app_media/SamAdamsRedux/find-a-sam/boston-lager.file"
+                },
+                {
+                    "file": "sam_adams_summer_ale.png",
+                    "sourceUrl": "https://www.samueladams.com//app_media/SamAdamsRedux/find-a-sam/summer-ale.file"
+                },
+                {
+                    "file": "sam_adams_octoberfest.png",
+                    "sourceUrl": "https://www.samueladams.com//app_media/SamAdamsRedux/find-a-sam/octoberfest.file"
+                },
+                {
+                    "file": "sam_adams_cherry_wheat.png",
+                    "sourceUrl": "https://www.samueladams.com//app_media/SamAdamsRedux/find-a-sam/cherry-wheat.file"
+                },
+                {
+                    "file": "sam_adams_winter_lager.png",
+                    "sourceUrl": "https://www.samueladams.com//app_media/SamAdamsRedux/find-a-sam/winter-lager.file"
+                },
+                {
+                    "file": "sam_adams_cold_snap.png",
+                    "sourceUrl": "https://www.samueladams.com//app_media/SamAdamsRedux/find-a-sam/cold-snap.file"
+                }
+            ]
+        },
+        "Miller": {
+            "website": "https://www.millerlite.com/",
+            "images": [
+                {
+                    "file": "miller_lite.png",
+                    "sourceUrl": "https://www.millerlite.com/sites/millerlite/files/inline-images/ML%20can_0%20%281%29_0.png"
+                },
+                {
+                    "file": "miller_high_life.png",
+                    "sourceUrl": "https://www.millerhighlife.com/sites/millerhighlife/files/inline-images/MHL%20Bottle.png"
+                },
+                {
+                    "file": "miller_genuine_draft.png",
+                    "sourceUrl": "https://us.mgd.com/sites/mgd/files/2021-02/MGD_Hero-Image.png"
+                }
+            ]
+        },
+        "Coors": {
+            "website": "https://www.coorslight.com/",
+            "images": [
+                {
+                    "file": "coors_light.png",
+                    "sourceUrl": "https://www.coorslight.com/sites/coorslight/files/inline-images/coorslight-can.png"
+                },
+                {
+                    "file": "coors_banquet.png",
+                    "sourceUrl": "https://www.coors.com/sites/coorsbanquetus/files/inline-images/the-legacy-coors-banquet%402x%20%281%29.png"
+                }
+            ]
+        },
+        "Black Box": {
+            "website": "https://www.blackboxwines.com/our-wines",
+            "images": [
+                {
+                    "file": "black_box_cabernet_sauvignon.png",
+                    "sourceUrl": "https://www.blackboxwines.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-blackbox-Library/default/dw6920d620/Our%20Wines/Cab_Sauv_Correct_3L_500ML_Format.png"
+                },
+                {
+                    "file": "black_box_chardonnay.png",
+                    "sourceUrl": "https://www.blackboxwines.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-blackbox-Library/default/dw82da0321/Our%20Wines/Chard_3L_500ML_Format.png"
+                },
+                {
+                    "file": "black_box_merlot.png",
+                    "sourceUrl": "https://www.blackboxwines.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-blackbox-Library/default/dwd3bd2bd7/Homepage/BBX_Merlot_CA_3L_000000000210075716_0.png"
+                },
+                {
+                    "file": "black_box_pinot_grigio.png",
+                    "sourceUrl": "https://www.blackboxwines.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-blackbox-Library/default/dw33a1d964/Our%20Wines/BBX_Pinot_grigio_CA_NV.png"
+                },
+                {
+                    "file": "black_box_sauvignon_blanc.png",
+                    "sourceUrl": "https://www.blackboxwines.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-blackbox-Library/default/dw602cb0d4/Homepage/BBX_Sauvignong_Blanc_Chile_3L_000000000210071921_0.png"
+                },
+                {
+                    "file": "black_box_red_blend.png",
+                    "sourceUrl": "https://www.blackboxwines.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-blackbox-Library/default/dw8d2e140e/Homepage/BBX_CA_Red_Blend_3L_000000000210077778_0.png"
+                },
+                {
+                    "file": "black_box_rose.png",
+                    "sourceUrl": "https://www.blackboxwines.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-blackbox-Library/default/dw246aeae0/Homepage/BBX_Rose_CA_3L_000000000210072181_0.png"
+                },
+                {
+                    "file": "black_box_pinot_noir.png",
+                    "sourceUrl": "https://www.blackboxwines.com/dw/image/v2/BFWT_PRD/on/demandware.static/-/Sites-blackbox-Library/default/dw8d3fb6fc/Our%20Wines/Pinot_Noir_3L_500ML_Format.png"
+                }
+            ]
+        },
+        "Cavit": {
+            "website": "https://www.cavit.com/wines",
+            "images": [
+                {
+                    "file": "cavit_pinot_grigio.png",
+                    "sourceUrl": "https://www.cavit.com/wp-content/uploads/2017/09/PG-Valdadige-featured-image.png"
+                },
+                {
+                    "file": "cavit_moscato.png",
+                    "sourceUrl": "https://www.cavit.com/wp-content/uploads/2017/09/moscato.png"
+                },
+                {
+                    "file": "cavit_chardonnay.png",
+                    "sourceUrl": "https://www.cavit.com/wp-content/uploads/2017/09/Featured-Image_Chardonnay.png"
+                },
+                {
+                    "file": "cavit_merlot.png",
+                    "sourceUrl": "https://www.cavit.com/wp-content/uploads/2017/09/Featured-Image_Merlot.png"
+                },
+                {
+                    "file": "cavit_sweet_red.png",
+                    "sourceUrl": "https://www.cavit.com/wp-content/uploads/2018/12/sweetred-bottole-shadow-2.png"
+                },
+                {
+                    "file": "cavit_cabernet_sauvignon.png",
+                    "sourceUrl": "https://www.cavit.com/wp-content/uploads/2017/09/Featured-Image_Cabernet-1.png"
+                },
+                {
+                    "file": "cavit_pinot_noir.png",
+                    "sourceUrl": "https://www.cavit.com/wp-content/uploads/2017/09/pinotnoir.png"
+                }
+            ]
+        }
+    },
+    "failures": {
+        "Jack Daniels": {
+            "website": "https://www.jackdaniels.com/en-us/whiskey",
+            "products": [
+                "Old No. 7",
+                "Honey",
+                "Apple",
+                "Fire",
+                "Single Barrel",
+                "Gentleman Jack"
+            ],
+            "reason": "CDN returns HTTP 400 — images require browser-based download",
+            "status": "NEEDS_SECOND_PASS"
+        },
+        "Stella Rosa": {
+            "website": "https://www.stellarosawines.com/collections/all",
+            "products": [
+                "Black",
+                "Rosso",
+                "Moscato",
+                "Blueberry"
+            ],
+            "reason": "HTTP 404 — alternate domain stellarosa.com also 404s on image URLs",
+            "status": "NEEDS_SECOND_PASS"
+        },
+        "Franzia": {
+            "website": "https://www.franzia.com/wines",
+            "products": [
+                "Chardonnay",
+                "Cabernet",
+                "Merlot",
+                "Moscato",
+                "Sunset Blush",
+                "Sangria",
+                "Pinot Grigio",
+                "White Zinfandel"
+            ],
+            "reason": "CDN URL pattern guess was incorrect — needs browser scraping of actual asset paths",
+            "status": "NEEDS_SECOND_PASS"
+        }
+    }
+}

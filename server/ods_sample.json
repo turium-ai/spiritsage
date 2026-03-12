@@ -1,0 +1,62 @@
+[
+  {
+    "lookup_code": "181682\t",
+    "item_name": "BUDWEISER 6PK BOTT",
+    "price": "9.49\t",
+    "cost_unit": "Each",
+    "size": "12 OZ",
+    "alcoholic": "NO",
+    "sales_tax": "6.350%\t",
+    "dcode": "A05",
+    "stock_count": 42,
+    "availability": "YES"
+  },
+  {
+    "lookup_code": "018200113604\t",
+    "item_name": "BUDWEISER 12 PCK BOTT",
+    "price": "12.99\t",
+    "cost_unit": "Each",
+    "size": "12 OZ",
+    "alcoholic": "NO",
+    "sales_tax": "6.350%\t",
+    "dcode": "A05",
+    "stock_count": 168,
+    "availability": "YES"
+  },
+  {
+    "lookup_code": "180182\t",
+    "item_name": "BUDWEISER 16 OZ CAN",
+    "price": "10.99\t",
+    "cost_unit": "Each",
+    "size": "16 OZ",
+    "alcoholic": "NO",
+    "sales_tax": "6.350%\t",
+    "dcode": "A05",
+    "stock_count": 21,
+    "availability": "YES"
+  },
+  {
+    "lookup_code": "087224009163\t",
+    "item_name": "PRESIDENTIAL 10 YR TAWNY PORT",
+    "price": "34.99\t",
+    "cost_unit": "Each",
+    "size": "750 ML",
+    "alcoholic": "NO",
+    "sales_tax": "6.350%\t",
+    "dcode": "NDA",
+    "stock_count": 1,
+    "availability": "YES"
+  },
+  {
+    "lookup_code": "01816927\t",
+    "item_name": "BUD LIGHT 6PK BOTT",
+    "price": "9.49\t",
+    "cost_unit": "Each",
+    "size": "12 OZ",
+    "alcoholic": "NO",
+    "sales_tax": "6.350%\t",
+    "dcode": "A05",
+    "stock_count": 156,
+    "availability": "YES"
+  }
+]

@@ -1,0 +1,7 @@
+# Highly restrictive .gcloudignore for frontend deployment
+# Only include the essential production artifacts
+*
+!dist/
+!nginx.conf
+!Dockerfile
+! .gcloudignore

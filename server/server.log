@@ -1,0 +1,471 @@
+[dotenv@17.3.1] injecting env (4) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+Loaded inventory: 3727 items across 8 categories
+Backend Server listening on port 8080
+Frontend client connected
+Starting Gemini session with context: { category: 'All', searchQuery: null, priceRange: null }
+Connected to Gemini Live API
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19252
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: searchInventory { query: 'honey' }
+Searching inventory for: "honey"
+Found 10 results
+Received video frame. Base64 length: 19900
+Received video frame. Base64 length: 21192
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 20532
+TOOL CALL: searchInventory { query: 'Hennessy' }
+Searching inventory for: "Hennessy"
+Found 10 results
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 20328
+Received video frame. Base64 length: 20240
+Received audio chunk of Base64 length: 5464
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: searchInventory { query: 'Hennessy VSOP' }
+Searching inventory for: "Hennessy VSOP"
+Found 10 results
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Received video frame. Base64 length: 22356
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 22356
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 21052
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 21516
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 21500
+Received video frame. Base64 length: 21720
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 21964
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 21844
+Received video frame. Base64 length: 21748
+Received video frame. Base64 length: 21840
+Received video frame. Base64 length: 21828
+Received video frame. Base64 length: 21768
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 21724
+Received audio chunk of Base64 length: 5464
+Frontend client disconnected. Code: 1005, Reason: 
+Gemini Live API Connection Closed. Code: 1000, Reason: None
+Frontend client connected
+Starting Gemini session with context: { category: 'All', searchQuery: null, priceRange: null }
+Connected to Gemini Live API
+Received video frame. Base64 length: 25764
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 26140
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 27052
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 28764
+TOOL CALL: searchInventory { query: 'Hennessy VSOP' }
+Searching inventory for: "Hennessy VSOP"
+Found 10 results
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 22308
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 20116
+Received video frame. Base64 length: 22704
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 24884
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19752
+Received video frame. Base64 length: 26428
+Received video frame. Base64 length: 25564
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 27504
+Received audio chunk of Base64 length: 5464
+TOOL CALL: searchInventory { query: 'Remy Martin' }
+Searching inventory for: "Remy Martin"
+Found 10 results
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 21912
+Received video frame. Base64 length: 21264
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 26100
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 24200
+Received video frame. Base64 length: 22744
+Received video frame. Base64 length: 19868
+TOOL CALL: searchInventory { query: 'Remy Martin X.o.' }
+Searching inventory for: "Remy Martin X.o."
+Found 10 results
+Received video frame. Base64 length: 23060
+Received audio chunk of Base64 length: 5464
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 23728
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 25400
+Received video frame. Base64 length: 25496
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 25140
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 26056
+Received video frame. Base64 length: 26036
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 25896
+Received video frame. Base64 length: 25780
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: searchInventory { query: 'XO brands' }
+Searching inventory for: "XO brands"
+Found 10 results
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 21372
+Received video frame. Base64 length: 25248
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 21800
+Received video frame. Base64 length: 25684
+Received video frame. Base64 length: 24284
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 24968
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 25292
+Received video frame. Base64 length: 26160
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 26416
+Received video frame. Base64 length: 26680
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 23148
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 25856
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 21936
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 24812
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 16436
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: searchInventory { query: 'Hennessy VSOP' }
+Searching inventory for: "Hennessy VSOP"
+Found 10 results
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Frontend client disconnected. Code: 1005, Reason: 
+Gemini Live API Connection Closed. Code: 1000, Reason: None
+Frontend client connected
+Starting Gemini session with context: { category: 'All', searchQuery: null, priceRange: null }
+Connected to Gemini Live API
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 20672
+TOOL CALL: searchInventory { query: 'Hennessy XO' }
+Searching inventory for: "Hennessy XO"
+Found 10 results
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 20696
+Received audio chunk of Base64 length: 5464
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_spirit.png' }
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 20532
+Received video frame. Base64 length: 20376
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19864
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19884
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Frontend client disconnected. Code: 1005, Reason: 
+Gemini Live API Connection Closed. Code: 1000, Reason: None
+Frontend client connected
+Starting Gemini session with context: { category: 'All', searchQuery: null, priceRange: null }
+Connected to Gemini Live API
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19804
+Received video frame. Base64 length: 19748
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19792
+Received video frame. Base64 length: 19844
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: searchInventory { query: 'hoppy' }
+Searching inventory for: "hoppy"
+Found 10 results
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_beer.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_beer.png' }
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Frontend client disconnected. Code: 1005, Reason: 
+Gemini Live API Connection Closed. Code: 1000, Reason: None
+Frontend client connected
+Starting Gemini session with context: { category: 'All', searchQuery: 'lemon', priceRange: null }
+Connected to Gemini Live API
+TOOL CALL: searchInventory { query: 'lemon' }
+Searching inventory for: "lemon"
+Found 10 results
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19036
+Received video frame. Base64 length: 18996
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19036
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 18924
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 18896
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: searchInventory { query: 'lemona' }
+Searching inventory for: "lemona"
+Found 10 results
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 18980
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_beer.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_beer.png' }
+Received video frame. Base64 length: 18916
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19040
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19372
+TOOL CALL: searchInventory { query: 'lemonade' }
+Searching inventory for: "lemonade"
+Found 10 results
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_beer.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_beer.png' }
+Received video frame. Base64 length: 19316
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19272
+Received video frame. Base64 length: 19208
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19156
+Received video frame. Base64 length: 18500
+Received audio chunk of Base64 length: 5464
+Received video frame. Base64 length: 19012
+Received video frame. Base64 length: 19312
+Received video frame. Base64 length: 19244
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+Received audio chunk of Base64 length: 5464
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_beer.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_beer.png' }
+TOOL CALL: searchInventory { query: 'jose cuervo' }
+Searching inventory for: "jose cuervo"
+Found 10 results
+TOOL CALL: showDrinkImage { imageUrl: '/images/placeholder_beer.png' }
+Relaying UI Event: showDrinkImage { imageUrl: '/images/placeholder_beer.png' }
+Frontend client disconnected. Code: 1001, Reason: 
+Gemini Live API Connection Closed. Code: 1000, Reason: None
