@@ -52,9 +52,10 @@ registerProcessor('pcm-player-processor', PCMPlayerProcessor);
 `;
 
 const getWsUrl = () => {
-    if (typeof window === 'undefined') return 'ws://localhost:8080/live';
-    const host = window.location.hostname === 'localhost' ? 'localhost:8080' : 'spiritsage-backend-447843351231.us-central1.run.app';
-    const protocol = host.includes('localhost') ? 'ws:' : 'wss:';
+    if (typeof window === 'undefined') return 'ws://localhost:8081/live';
+    const isLocal = window.location.hostname === 'localhost';
+    const host = isLocal ? window.location.host : 'spiritsage-backend-447843351231.us-central1.run.app';
+    const protocol = isLocal ? (window.location.protocol === 'https:' ? 'wss:' : 'ws:') : 'wss:';
     return `${protocol}//${host}/live`;
 };
 
@@ -80,6 +81,10 @@ export function useLiveAPI(url = getWsUrl()) {
         }
         setPlaying(false);
         isPlayingRef.current = false;
+        // Notify backend to signal Gemini to stop generating and accept new input
+        if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+            wsRef.current.send(JSON.stringify({ type: 'interrupt' }));
+        }
     }, []);
 
     const initAudio = async () => {
@@ -146,6 +151,10 @@ export function useLiveAPI(url = getWsUrl()) {
             const msg = JSON.parse(event.data);
 
             if (msg.type === 'serverMessage' && msg.data) {
+                // Occasional log for downlink traffic
+                if (Math.random() < 0.01) {
+                    console.log('Received serverMessage from Gemini');
+                }
                 const serverContent = msg.data.serverContent;
                 if (serverContent) {
                     if (serverContent.interrupted) {

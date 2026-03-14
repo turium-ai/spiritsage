@@ -1,6 +1,7 @@
 import { pipeline, env } from '@xenova/transformers';
-import inventoryEmbeddings from '../data/inventory_embeddings.json';
-import inventory from '../data/inventory.json';
+import inventoryEmbeddings from '../data/inventory_embeddings.json' with { type: 'json' };
+import inventory from '../data/inventory.json' with { type: 'json' };
+import { NON_ALC_KEYWORDS } from './imageUtils.js';
 
 // Configure transformers.js for the browser
 env.allowLocalModels = false;
@@ -81,7 +82,6 @@ class SemanticSearchEngine {
                 const RESULTS_PER_INGREDIENT = 6; 
                 
                 // Filter out non-alcoholic mixers/garnishes that will just confuse the database
-                const NON_ALC_KEYWORDS = ['juice', 'wedge', 'slice', 'syrup', 'soda', 'water', 'salt', 'pepper', 'sugar', 'bitters', 'ice', 'club', 'tonic', 'cola', 'coke', 'sprite', 'ginger ale', 'ginger beer', 'grenadine', 'sweet and sour', 'sour mix', 'puree', 'purée', 'nectar', 'agave', 'honey', 'milk', 'cream', 'coffee', 'espresso', 'tea', 'egg', 'white', 'yolk'];
                 
                 const validAlcoholicIngredients = ingredients.filter(ing => {
                     const lowerIng = ing.toLowerCase();
@@ -108,8 +108,33 @@ class SemanticSearchEngine {
             }
         }
 
-        console.log(`Generating embedding for query: "${query}"`);
-        const output = await this.extractor(query, { pooling: 'mean', normalize: true });
+        // --- Product-Label Synonym Expansion ---
+        // Map common shorthand labels to the full product name so embeddings score correctly.
+        // nameFilter: after scoring, only keep items whose name includes the key colour/word —
+        // this prevents "Johnnie Walker Red" from showing when user asked for "blue label".
+        const LABEL_SYNONYMS = [
+            { pattern: /\bblue\s+label\b/i,   replacement: 'Johnnie Walker Blue whisky scotch',        nameFilter: 'blue' },
+            { pattern: /\bblack\s+label\b/i,  replacement: 'Johnnie Walker Double Black whisky scotch', nameFilter: 'black' },
+            { pattern: /\bred\s+label\b/i,    replacement: 'Johnnie Walker Red whisky scotch',          nameFilter: 'red' },
+            { pattern: /\bgreen\s+label\b/i,  replacement: 'Johnnie Walker Green whisky scotch',        nameFilter: 'green' },
+            { pattern: /\bgold\s+label\b/i,   replacement: 'Johnnie Walker Gold whisky scotch',         nameFilter: 'gold' },
+            { pattern: /\bdouble\s+black\b/i, replacement: 'Johnnie Walker Double Black whisky scotch', nameFilter: 'double black' },
+            { pattern: /\bblue\s+run\b/i,     replacement: 'Blue Run bourbon whiskey',                  nameFilter: 'blue run' },
+        ];
+        let expandedQuery = query;
+        let activeSynonym = null;
+        for (const synonym of LABEL_SYNONYMS) {
+            if (synonym.pattern.test(expandedQuery)) {
+                expandedQuery = expandedQuery.replace(synonym.pattern, synonym.replacement);
+                activeSynonym = synonym;
+                console.log(`Label synonym expanded: "${query}" → "${expandedQuery}"`);
+                break;
+            }
+        }
+
+
+        console.log(`Generating embedding for query: "${expandedQuery}"`);
+        const output = await this.extractor(expandedQuery, { pooling: 'mean', normalize: true });
         const queryEmbedding = Array.from(output.data);
 
         console.log("Calculating similarities...");
@@ -133,8 +158,8 @@ class SemanticSearchEngine {
 
         if (queryLower.match(/\bwine\b/)) enforcedCategory = 'wine';
         else if (queryLower.match(/\bchampagne\b/)) enforcedCategory = 'champagne';
-        else if (queryLower.match(/\bbeer|ale|lager|stout|ipa|pilsner\b/)) enforcedCategory = 'beer';
-        else if (queryLower.match(/\bliqueur|cordial\b/)) enforcedCategory = 'liqueur';
+        else if (queryLower.match(/\bbeer|ale|lager|stout|ipa|pilsner|porter|brew\b/)) enforcedCategory = 'beer';
+        else if (queryLower.match(/\bliqueur|cordial|amaro|aperitif|bitter|curacao|curaçao|bols\b/)) enforcedCategory = 'liqueur';
 
         let enforcedSubCategory = null;
 
@@ -142,6 +167,7 @@ class SemanticSearchEngine {
         // Also handles Scotch regions (islay, speyside, etc.) and moonshine
         if (queryLower.match(/\bwhiskey|whisky|bourbon|scotch|rye|malt|irish|tennessee|japanese|moonshine|white whiskey|islay|speyside|highland|lowland|campbeltown\b/)) {
             enforcedSpirit = 'whiskey';
+            enforcedCategory = 'spirits';
             if (queryLower.match(/\bsingle malt\b/)) enforcedSubCategory = 'single malt';
             else if (queryLower.match(/\bbourbon\b/)) enforcedSubCategory = 'bourbon';
             else if (queryLower.match(/\brye\b/)) enforcedSubCategory = 'rye';
@@ -156,6 +182,7 @@ class SemanticSearchEngine {
         }
         else if (queryLower.match(/\btequila|mezcal\b/)) {
             enforcedSpirit = 'tequila';
+            enforcedCategory = 'spirits';
             if (queryLower.match(/\bblanco|silver\b/)) enforcedSubCategory = 'blanco';
             else if (queryLower.match(/\breposado\b/)) enforcedSubCategory = 'reposado';
             else if (queryLower.match(/\bañejo|anejo\b/) && !queryLower.match(/\bextra\b/)) enforcedSubCategory = 'anejo';
@@ -166,6 +193,7 @@ class SemanticSearchEngine {
         }
         else if (queryLower.match(/\bvodka\b/)) {
             enforcedSpirit = 'vodka';
+            enforcedCategory = 'spirits';
             if (queryLower.match(/\bwheat\b/)) enforcedSubCategory = 'wheat';
             else if (queryLower.match(/\brye\b/)) enforcedSubCategory = 'rye';
             else if (queryLower.match(/\bcorn\b/)) enforcedSubCategory = 'corn';
@@ -174,6 +202,7 @@ class SemanticSearchEngine {
         }
         else if (queryLower.match(/\brum\b/)) {
             enforcedSpirit = 'rum';
+            enforcedCategory = 'spirits';
             if (queryLower.match(/\bwhite|silver\b/)) enforcedSubCategory = 'white';
             else if (queryLower.match(/\bgold\b/)) enforcedSubCategory = 'gold';
             else if (queryLower.match(/\bdark\b/)) enforcedSubCategory = 'dark';
@@ -184,6 +213,7 @@ class SemanticSearchEngine {
         }
         else if (queryLower.match(/\bgin\b/)) {
             enforcedSpirit = 'gin';
+            enforcedCategory = 'spirits';
             if (queryLower.match(/\blondon dry\b/)) enforcedSubCategory = 'london dry';
             else if (queryLower.match(/\bplymouth\b/)) enforcedSubCategory = 'plymouth';
             else if (queryLower.match(/\bold tom\b/)) enforcedSubCategory = 'old tom';
@@ -335,15 +365,102 @@ class SemanticSearchEngine {
                 similarity += 0.15;
             }
 
+            let categoryPenalty = 0;
+            // If we detected a specific spirit/category requirement, penalize items that don't match
+            if (enforcedCategory) {
+                const itemCat = fullItem.catLower;
+                const isBeerOrWineSearch = enforcedCategory === 'beer' || enforcedCategory === 'wine' || enforcedCategory === 'champagne';
+                const isItemBeerOrWine = itemCat.includes('beer') || itemCat.includes('wine');
+
+                // If searching for beer/wine but got a spirit, or vice versa, apply a massive penalty
+                // to effectively drop it below threshold.
+                if (isBeerOrWineSearch !== isItemBeerOrWine) {
+                    categoryPenalty = 0.5;
+                }
+                
+                // Extra check for liqueur specifically
+                if (enforcedCategory === 'liqueur' && !itemCat.includes('liqueur') && !itemCat.includes('spirit') && !itemCat.includes('cordial')) {
+                    categoryPenalty = 0.3;
+                }
+            }
+            
+            if (enforcedSpirit) {
+                const itemSpirit = (fullItem.liquorType || '').toLowerCase();
+                const itemName = (fullItem.name || '').toLowerCase();
+                if (!itemSpirit.includes(enforcedSpirit) && !itemName.includes(enforcedSpirit)) {
+                    categoryPenalty += 0.2;
+                }
+            }
+
+            // Brand match penalty (if brand in search but not in item)
+            // Hardened: If brand is specified, we really want that brand.
+            const BRANDS = ['bols', 'tanqueray', 'hendricks', 'bacardi', 'titos', 'smirnoff', 'casamigos', 'patron', 'grey goose', 'jameson', 'maker', 'bulleit', 'jack daniels', 'johnnie walker', 'blue run'];
+            let queryHasBrand = false;
+            for (const brand of BRANDS) {
+                if (queryLower.includes(brand)) {
+                    queryHasBrand = true;
+                    if (!fullItem.nameLower.includes(brand)) {
+                        categoryPenalty += 0.5; // Significant penalty for wrong brand
+                    }
+                    break;
+                }
+            }
+
+            // Specialty Flavor Keyword Enforcement
+            // If the query contains a specific flavor word, we REQUIRE it.
+            const specialtyFlavors = ['blue', 'peach', 'strawberry', 'raspberry', 'mango', 'pineapple', 'apple', 'jalapeno', 'habanero', 'espresso', 'coffee', 'chocolate', 'vanilla', 'elderflower', 'mint', 'triple sec', 'sec', 'lychee'];
+            for (const flavor of specialtyFlavors) {
+                if (queryLower.includes(flavor)) {
+                    // EXCLUSION: If searching for "lager" or "pilsner", don't penalize for "age" (part of "lager")
+                    if ((queryLower.includes('lager') || queryLower.includes('pilsner')) && flavor === 'age') continue;
+                    
+                    if (!fullItem.nameLower.includes(flavor)) {
+                        categoryPenalty += 0.5; // Significant penalty for missing specialty flavor
+                    }
+                }
+            }
+
+            // Flavor modifier penalty (for base spirit queries)
+            const baseSpirits = ['tequila', 'vodka', 'rum', 'gin', 'whiskey', 'whisky', 'bourbon', 'scotch'];
+            const flavorModifiers = ['rose', 'cream', 'strawberry', 'jalapeno', 'habanero', 'honey', 'espresso', 'pineapple', 'mango', 'peach', 'apple', 'infusion', 'infused', 'flavored', 'spiced'];
+            
+            if (baseSpirits.includes(queryLower)) {
+                const itemName = fullItem.nameLower;
+                if (flavorModifiers.some(mod => itemName.includes(mod))) {
+                    categoryPenalty += 0.3; // Give base spirits a clear lead
+                }
+            }
+
+            similarity = Math.max(0, similarity - categoryPenalty);
             scoredItems.push({ id: record.id, similarity });
         } // End of for...of loop
 
         // Sort by highest similarity
         scoredItems.sort((a, b) => b.similarity - a.similarity);
 
-        // Get top 24 results, respecting the threshold unless explicitly bypassed
-        const topResults = scoredItems
-            .filter(item => bypassThreshold || item.similarity > 0.3)
+        // Apply label name filter if a synonym expansion was used (e.g. only show items with "blue" in name for "blue label")
+        let filteredScoredItems = scoredItems;
+        if (activeSynonym && activeSynonym.nameFilter) {
+            const requiredWord = activeSynonym.nameFilter.toLowerCase();
+            // Build a regex that requires the word to appear as a standalone word (not as part of "blueberry" etc.)
+            const wordBoundaryRe = new RegExp(`\\b${requiredWord.replace(/\s+/g, '\\s+')}\\b`, 'i');
+            filteredScoredItems = scoredItems.filter(scored => {
+                const item = this.mappedInventory.get(scored.id);
+                return item && wordBoundaryRe.test(item.nameLower || '');
+            });
+            // If applying the filter leaves nothing, fall back to full results to avoid empty screen
+            if (filteredScoredItems.length === 0) filteredScoredItems = scoredItems;
+        }
+
+        // Top-score gate: if even the best result is weak (< 0.38), the query is too vague/misspelled.
+        // Return nothing rather than completely unrelated items.
+        if (filteredScoredItems.length > 0 && !bypassThreshold && filteredScoredItems[0].similarity < 0.38) {
+            return [];
+        }
+
+        // Get top 24 results with a raised threshold (was 0.3, now 0.38)
+        const topResults = filteredScoredItems
+            .filter(item => bypassThreshold || item.similarity > 0.38)
             .slice(0, 24);
 
         // Map back to inventory full items

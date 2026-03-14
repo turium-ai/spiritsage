@@ -5,6 +5,7 @@ import Recommendations from './components/Recommendations'
 import TrendingSection from './components/TrendingSection'
 import TrendBundleDrawer from './components/TrendBundleDrawer'
 import CartDrawer from './components/CartDrawer'
+import AdminDashboard from './components/AdminDashboard'
 import { useLiveAPI } from './hooks/useLiveAPI'
 
 const DEFAULT_FILTERS = { category: 'All', style: 'All' };
@@ -70,6 +71,7 @@ function App() {
   const cameraEnabledRef = useRef(false)
   const connectedRef = useRef(false)
   const audioBufferRef = useRef([])
+  const skipNextUiSync = useRef(false)
 
   useEffect(() => { micEnabledRef.current = micEnabled }, [micEnabled])
   useEffect(() => { cameraEnabledRef.current = cameraEnabled }, [cameraEnabled])
@@ -85,10 +87,11 @@ function App() {
     priceRange: preferences?.priceRange || null
   }), [preferences, searchQuery])
 
-  // Voice search from Gemini -> update UI
+  // Voice search from Gemini -> update search query so the full local engine runs
   useEffect(() => {
     if (setOnSearchResults) {
       setOnSearchResults((query) => {
+        skipNextUiSync.current = true
         setSearchQuery(query)
         setIsBrowsing(true)
         setTimeout(() => {
@@ -194,6 +197,12 @@ registerProcessor('audio-recorder-processor', AudioRecorderProcessor);
     else { connect(browsingContext); connectedRef.current = true; startMedia() }
   }, [connected, browsingContext, connect, disconnect, startMedia, stopMedia])
 
+  // When the user types manually, always clear Gemini results so the full search engine runs
+  const handleManualSearch = useCallback((query) => {
+    setSearchQuery(query)
+    setGeminiResults(null)
+  }, [])
+
   const handleToggleMic = useCallback(() => setMicEnabled(v => !v), [])
   const handleToggleCamera = useCallback(() => {
     if (mediaStreamRef.current) { const vt = mediaStreamRef.current.getVideoTracks()[0]; if (vt) vt.enabled = !cameraEnabled }
@@ -221,8 +230,6 @@ registerProcessor('audio-recorder-processor', AudioRecorderProcessor);
 
   useEffect(() => { return () => { stopMedia(); disconnect() } }, [stopMedia, disconnect])
 
-  useEffect(() => { return () => { stopMedia(); disconnect() } }, [stopMedia, disconnect])
-
   // Typing detection logic
   const typingTimerRef = useRef(null)
 
@@ -247,6 +254,11 @@ registerProcessor('audio-recorder-processor', AudioRecorderProcessor);
   // Enriched UI State Sync (The "Context Sandwich")
   useEffect(() => {
     if (connected && !isTyping) {
+      if (skipNextUiSync.current) {
+        console.log('Skipping UI sync because it was triggered by an AI tool call.');
+        skipNextUiSync.current = false;
+        return;
+      }
       // Only send the UI state when the user is done typing to avoid WebSocket flooding
       const uiState = {
         type: "UI_STATE_UPDATE",
@@ -262,14 +274,15 @@ registerProcessor('audio-recorder-processor', AudioRecorderProcessor);
         sendClientContent(`[UI_STATE] ${stateStr}`);
       }
     } else if (connected && isTyping) {
-      // Send a lightweight "typing" indicator without heavy context payload
+      // Don't send isTyping: true if Gemini itself triggered the search — it would cause a 1.5s wait
+      if (skipNextUiSync.current) return;
       const typingState = JSON.stringify({ type: "UI_STATE_UPDATE", isTyping: true });
       if (typingState !== lastUIStateSync.current) {
         lastUIStateSync.current = typingState;
         sendClientContent(`[UI_STATE] ${typingState}`);
       }
     }
-  }, [connected, isTyping, resultMetadata, sendClientContent]);
+  }, [connected, isTyping, resultMetadata, sendClientContent, searchQuery]);
 
   useEffect(() => {
     if (connected && browsingContext) {
@@ -296,15 +309,18 @@ registerProcessor('audio-recorder-processor', AudioRecorderProcessor);
     }
   }, [connected, browsingContext, sendClientContent])
 
+  if (window.location.pathname === '/admin') {
+    return <AdminDashboard />
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-bg)' }}>
       <LiquidNavbar
         showControls={isBrowsing}
-        onSearch={setSearchQuery}
+        onSearch={handleManualSearch}
         searchQuery={searchQuery}
         onReset={() => {
           setPreferences(null); setSearchQuery(''); setIsBrowsing(false)
-          if (connected) { stopMedia(); disconnect() }
           window.scrollTo({ top: 0, behavior: 'smooth' })
         }}
         sommelier={sommelierProps}

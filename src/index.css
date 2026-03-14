@@ -277,7 +277,22 @@ h3 {
 
 .trends-header h2 {
   font-size: 1.2rem;
+  margin: 0;
 }
+
+.trends-timestamp {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-top: 0.125rem;
+  letter-spacing: 0.01em;
+}
+
+.flex { display: flex; }
+.flex-1 { flex: 1; }
+.items-center { align-items: center; }
+.gap-3 { gap: 0.75rem; }
 
 .trends-badge {
   font-size: 10px;
@@ -591,6 +606,37 @@ h3 {
   gap: 1rem;
   position: relative;
   overflow: hidden;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.drawer-item.oos {
+  opacity: 0.6;
+  filter: grayscale(0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.oos-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  background: #A01635;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.oos-text {
+  color: #A01635;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .drawer-item-img-wrap {
@@ -643,6 +689,15 @@ h3 {
   color: #d1d5db;
   text-transform: capitalize;
 }
+
+.alt-tag {
+  color: #fbbf24;
+  font-weight: 600;
+  margin-left: 0.25rem;
+}
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-4 { margin-bottom: 1rem; }
 
 .drawer-item-blurb {
   background-color: rgba(225, 194, 123, 0.1);

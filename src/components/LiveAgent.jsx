@@ -33,11 +33,17 @@ export default function LiveAgent({ browsingContext, onVoiceSearch }) {
 
     const recorderWorkletCode = `
 class AudioRecorderProcessor extends AudioWorkletProcessor {
+  constructor() {
+    super();
+    this.bufferSize = 2048; // Buffer size (approx 8 times/sec at 16k)
+    this.buffer = new Float32Array(this.bufferSize);
+    this.bufferIndex = 0;
+  }
+
   process(inputs, outputs, parameters) {
     const input = inputs[0];
     if (input.length > 0) { 
       const samples = input[0];
-      this.port.postMessage({ type: 'audio', samples });
       
       // Local VAD: Calculate RMS energy to detect speech
       let sum = 0;
@@ -49,6 +55,15 @@ class AudioRecorderProcessor extends AudioWorkletProcessor {
       // If RMS exceeds threshold (0.05 is a typical "voice" floor), signal an interruption
       if (rms > 0.05) {
         this.port.postMessage({ type: 'speech_detected' });
+      }
+
+      // Add to buffer
+      for (let i = 0; i < samples.length; i++) {
+        this.buffer[this.bufferIndex++] = samples[i];
+        if (this.bufferIndex >= this.bufferSize) {
+          this.port.postMessage({ type: 'audio', samples: this.buffer });
+          this.bufferIndex = 0;
+        }
       }
     }
     return true;
@@ -111,10 +126,14 @@ registerProcessor('audio-recorder-processor', AudioRecorderProcessor);
                         if (type === 'audio' && micEnabledRef.current && connectedRef.current) {
                             const pcm16 = new Int16Array(samples.length);
                             for (let i = 0; i < samples.length; i++) pcm16[i] = Math.max(-32768, Math.min(32767, samples[i] * 32768));
-                            const bytes = new Uint8Array(pcm16.buffer);
+                            
+                            // More efficient binary to base64
+                            const uint8 = new Uint8Array(pcm16.buffer);
                             let binary = '';
-                            for (let i = 0; i < bytes.length; i += 0x8000)
-                                binary += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+                            const len = uint8.byteLength;
+                            for (let i = 0; i < len; i++) {
+                                binary += String.fromCharCode(uint8[i]);
+                            }
                             sendAudio(window.btoa(binary));
                         }
                     };
@@ -129,14 +148,14 @@ registerProcessor('audio-recorder-processor', AudioRecorderProcessor);
             videoIntervalRef.current = setInterval(() => {
                 if (cameraEnabledRef.current && connectedRef.current && videoRef.current) {
                     const canvas = document.createElement('canvas');
-                    canvas.width = videoRef.current.videoWidth;
-                    canvas.height = videoRef.current.videoHeight;
-                    if (canvas.width > 0 && canvas.height > 0) {
-                        canvas.getContext('2d').drawImage(videoRef.current, 0, 0);
-                        sendVideo(canvas.toDataURL('image/jpeg', 0.5).split(',')[1], 'image/jpeg');
+                    canvas.width = 320; // Downscale for stability
+                    canvas.height = 240;
+                    if (videoRef.current.videoWidth > 0 && videoRef.current.videoHeight > 0) {
+                        canvas.getContext('2d').drawImage(videoRef.current, 0, 0, 320, 240);
+                        sendVideo(canvas.toDataURL('image/jpeg', 0.3).split(',')[1], 'image/jpeg');
                     }
                 }
-            }, 1000);
+            }, 2000); // Reduce frequency to 2s
         } catch (err) { setLocalError(err.message); }
     };
 

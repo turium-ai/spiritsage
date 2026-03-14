@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, Sparkles, GlassWater, PartyPopper, Gift, Package, Scale, Flame, Wind, Zap, Waves, Search } from 'lucide-react';
+import { ChevronRight, Sparkles, GlassWater, PartyPopper, Gift, Beer, Scale, Flame, Wind, Zap, Waves, Search } from 'lucide-react';
 
 const getFlavorOptions = (category) => {
     switch (category) {
@@ -49,7 +49,7 @@ const steps = [
         options: [
             { label: "Spirits", value: "Spirits", icon: <GlassWater size={28} />, desc: "Whiskey, Tequila, Vodka & More", bg: "/images/ui/bg_spirits.png" },
             { label: "Wine & Bubbles", value: "Wine,Champagne", icon: <Sparkles size={28} />, desc: "Reds, Whites & Champagnes", bg: "/images/ui/bg_wine.png" },
-            { label: "Beer & More", value: "Beer, Cider & Seltzers", icon: <Package size={28} />, desc: "Craft Brews, Ciders & Seltzers", bg: "/images/ui/bg_beer.png" },
+            { label: "Beer & More", value: "Beer, Cider & Seltzers", icon: <Beer size={28} />, desc: "Craft Brews, Ciders & Seltzers", bg: "/images/ui/bg_beer.png" },
             { label: "Liqueurs", value: "Liqueurs & Cordials", icon: <Gift size={28} />, desc: "Sweet & Flavorful Additions", bg: "/images/ui/bg_liqueurs.png" },
             { label: "Discover All", value: "All", icon: <PartyPopper size={28} />, desc: "Explore the Entire Cellar", bg: "/images/ui/bg_discover_all.png" }
         ]
@@ -85,7 +85,8 @@ const Onboarding = ({ onComplete, onSearch, searchQuery }) => {
         <div className="animate-fade-in p-responsive" style={{
             maxWidth: '1200px',
             textAlign: 'center',
-            margin: '0 auto 40px auto'
+            margin: '0 auto 40px auto',
+            paddingTop: '60px'
         }}>
             {currentStep > 0 && currentStep !== 1 && (
                 <>

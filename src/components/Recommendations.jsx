@@ -3,7 +3,9 @@ import { Info, Search } from 'lucide-react';
 import { RecommendationEngine, extractPriceFilters } from '../utils/RecommendationEngine';
 // import inventory from '../data/inventory.json'; // Removed static import
 import ProductModal from './ProductModal';
-import { semanticEngine } from '../utils/SemanticSearchEngine';
+import { semanticEngine } from '../utils/SemanticSearchEngine.js';
+import { getProductImage, getPlaceholderImage } from '../utils/imageUtils';
+import { logImageError } from '../utils/logger';
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -36,24 +38,6 @@ const PRICE_BUCKETS = [
     { label: 'Icon / Collector ($150+)', min: 150.01, max: 10000 }
 ];
 
-const getFallbackImage = (item) => {
-    const lookupStr = `${item.liquorType || ''} ${item.name || ''} ${item.category || ''}`.toLowerCase();
-
-    if (lookupStr.includes('whiskey') || lookupStr.includes('scotch') || lookupStr.includes('bourbon') || lookupStr.includes('rye') || lookupStr.includes('malt')) {
-        return '/images/placeholder_spirit.png';
-    }
-    if (lookupStr.includes('tequila') || lookupStr.includes('mezcal') || lookupStr.includes('vodka') || lookupStr.includes('rum') || lookupStr.includes('gin') || lookupStr.includes('cognac') || lookupStr.includes('brandy') || lookupStr.includes('liqueur')) {
-        return '/images/placeholder_spirit.png';
-    }
-    if (lookupStr.includes('beer') || lookupStr.includes('ale') || lookupStr.includes('lager') || lookupStr.includes('stout')) {
-        return '/images/placeholder_beer.png';
-    }
-    if (lookupStr.includes('wine') || lookupStr.includes('champagne') || lookupStr.includes('prosecco')) {
-        return '/images/placeholder_wine.png';
-    }
-
-    return '/images/placeholder_spirit.png'; // safe default
-};
 
 const getFormattedSize = (sizeStr) => {
     if (!sizeStr) return '';
@@ -131,19 +115,45 @@ const Recommendations = ({ filters, searchQuery, onResultsChange, inventory }) =
     }, [searchQuery, searchContext.cleanQuery, rankedRecommendations, inventory]);
 
     const baseResults = React.useMemo(() => {
-        let base = rankedRecommendations;
+        const q = (searchContext.cleanQuery || searchQuery || '').toLowerCase();
+
+        // Category intent detection — mirror the same logic in SemanticSearchEngine and backend
+        const SPIRIT_KEYWORDS = ['whiskey', 'whisky', 'bourbon', 'scotch', 'vodka', 'gin', 'rum', 'tequila', 'mezcal', 'cognac', 'brandy', 'liqueur'];
+        const isSpiritSearch = SPIRIT_KEYWORDS.some(k => q.includes(k));
+        const isBeerSearch = /\bbeer\b|\bale\b|\bipa\b|\blager\b|\bstout\b|\bporter\b|\bbrewed\b/.test(q);
+        const isWineSearch = /\bwine\b|\bchardonnay\b|\bpinot\b|\bcabernet\b|\bmerlot\b|\brosé\b|\brose\b/.test(q);
+
+        const categoryFilter = (item) => {
+            if (!q) return true;
+            const cat = (item.category || '').toLowerCase();
+            if (isSpiritSearch && !isBeerSearch && !isWineSearch) {
+                return !cat.includes('beer') && !cat.includes('wine');
+            }
+            if (isBeerSearch && !isSpiritSearch) {
+                return cat.includes('beer');
+            }
+            if (isWineSearch && !isSpiritSearch) {
+                return cat.includes('wine');
+            }
+            return true;
+        };
+
+        let base = rankedRecommendations.filter(categoryFilter);
 
         // Semantic First Pipeline
         // If we have AI semantic results, they go to the top. Any exact literal matches act as secondary fallbacks.
         if (semanticResults.length > 0) {
-            const exactMatches = rankedRecommendations.filter(i => i.matchType === 'exact');
-            const comparables = rankedRecommendations.filter(i => i.matchType === 'comparable');
+            const exactMatches = rankedRecommendations.filter(i => i.matchType === 'exact').filter(categoryFilter);
+            const comparables = rankedRecommendations.filter(i => i.matchType === 'comparable').filter(categoryFilter);
 
             // Preserve explicit exact matches and comparables. Only add AI semantic results that are purely new discoveries.
-            let pureSemantic = semanticResults.filter(s =>
-                !exactMatches.some(e => e.id === s.id) &&
-                !comparables.some(c => c.id === s.id)
-            );
+            // IMPORTANT: Apply categoryFilter first to prevent stale results from a previous query bleeding in.
+            let pureSemantic = semanticResults
+                .filter(categoryFilter)
+                .filter(s =>
+                    !exactMatches.some(e => e.id === s.id) &&
+                    !comparables.some(c => c.id === s.id)
+                );
 
             // Apply strict text-extracted price filters to semantic results
             if (searchContext.min !== undefined) {
@@ -173,8 +183,8 @@ const Recommendations = ({ filters, searchQuery, onResultsChange, inventory }) =
             const sortedSemantic = [...pureSemantic].sort((a, b) => a.price - b.price);
             base = [...sortedSemantic, ...exactMatches, ...comparables];
         } else if (searchQuery && isSearchingSemantic) {
-            const exactMatches = rankedRecommendations.filter(i => i.matchType === 'exact');
-            const comparables = rankedRecommendations.filter(i => i.matchType === 'comparable');
+            const exactMatches = rankedRecommendations.filter(i => i.matchType === 'exact').filter(categoryFilter);
+            const comparables = rankedRecommendations.filter(i => i.matchType === 'comparable').filter(categoryFilter);
             base = [...exactMatches, ...comparables];
         }
         return base;
@@ -276,9 +286,13 @@ const Recommendations = ({ filters, searchQuery, onResultsChange, inventory }) =
         >
             <div style={{ position: 'relative', height: '200px', background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px' }}>
                 <img
-                    src={item.image || getFallbackImage(item)}
+                    src={getProductImage(item)}
                     alt={item.name}
-                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = getFallbackImage(item); }}
+                    onError={(e) => { 
+                        logImageError(item.name, e.currentTarget.src);
+                        e.currentTarget.onerror = null; 
+                        e.currentTarget.src = getPlaceholderImage(item); 
+                    }}
                     style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.4))' }}
                 />
                 {item.isGreatUpgrade && (
@@ -540,9 +554,13 @@ const Recommendations = ({ filters, searchQuery, onResultsChange, inventory }) =
                                                 borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '8px'
                                             }}>
                                                 <img
-                                                    src={item.image || getFallbackImage(item)}
+                                                    src={getProductImage(item)}
                                                     alt={item.name}
-                                                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = getFallbackImage(item); }}
+                                                    onError={(e) => { 
+                        logImageError(item.name, e.currentTarget.src);
+                        e.currentTarget.onerror = null; 
+                        e.currentTarget.src = getPlaceholderImage(item); 
+                    }}
                                                     style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
                                                 />
                                             </div>

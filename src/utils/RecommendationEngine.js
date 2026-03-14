@@ -423,7 +423,7 @@ export class RecommendationEngine {
 
                         if (isSubcategory) {
                             if (!itemTypeUpper.includes(targetCategory)) isBrandMatch = false;
-                        } else if (itemCategoryUpper !== targetCategory) {
+                        } else if (!itemCategoryUpper.includes(targetCategory)) {
                             isBrandMatch = false;
                         }
                     }

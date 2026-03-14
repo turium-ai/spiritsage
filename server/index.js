@@ -68,7 +68,7 @@ const TRENDS_CACHE_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
 app.get('/api/trends', async (req, res) => {
     const now = Date.now();
     if (cachedTrends && (now - lastTrendsFetch < TRENDS_CACHE_DURATION_MS)) {
-        return res.json(cachedTrends);
+        return res.json({ trends: cachedTrends, lastFetch: lastTrendsFetch });
     }
 
     const apiKey = process.env.GEMINI_API_KEY;
@@ -78,8 +78,8 @@ app.get('/api/trends', async (req, res) => {
 
     try {
         const ai = new GoogleGenAI({ apiKey });
-        const prompt = `You are a mixology trend analyst. Search the web for the top 4 most popular trending alcoholic drinks or cocktails currently going viral on TikTok. 
-        Focus on specific, highly-replicated drink recipes. Do not include vague concepts.
+        const prompt = `You are a mixology trend analyst. Search the web for the top 4 most popular trending alcoholic drinks or cocktails that have gone viral on TikTok in the LAST 30 DAYS ONLY (since ${new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}). 
+        Focus on specific, highly-replicated drink recipes that are ACTIVE right now. Do not include older "classic" trends from previous years like the Parmesan Espresso Martini or the Negroni Sbagliato unless they have a massive new 2026 variation.
         Provide the data as a raw JSON array of objects. Do not use markdown blocks. Do not add any conversational text.
         Format MUST strictly be this JSON array:
         [
@@ -106,7 +106,7 @@ app.get('/api/trends', async (req, res) => {
 
         cachedTrends = trends;
         lastTrendsFetch = now;
-        res.json(trends);
+        res.json({ trends, lastFetch: now });
     } catch (err) {
         console.error('Failed to fetch trends from Gemini:', err);
         if (cachedTrends) {
@@ -161,6 +161,37 @@ app.post('/api/generate-sage-blurbs', async (req, res) => {
     }
 });
 
+// --- Admin Logging & Monitoring ---
+const logBuffer = [];
+const MAX_LOGS = 200;
+
+function logEvent(level, type, message, details = null) {
+    const event = {
+        timestamp: new Date().toISOString(),
+        level, // INFO, WARN, ERROR
+        type,  // GEMINI, SYSTEM, SEARCH, UI
+        message,
+        details
+    };
+    logBuffer.unshift(event);
+    if (logBuffer.length > MAX_LOGS) {
+        logBuffer.pop();
+    }
+    // Also mirror to console for standard log viewing
+    const logMethod = level === 'ERROR' ? 'error' : (level === 'WARN' ? 'warn' : 'log');
+    console[logMethod](`[${type}] ${message}`, details || '');
+}
+
+app.get('/api/admin/logs', (req, res) => {
+    res.json(logBuffer);
+});
+
+app.post('/api/admin/log-event', (req, res) => {
+    const { level, type, message, details } = req.body;
+    logEvent(level || 'INFO', type || 'UI', message, details);
+    res.json({ success: true });
+});
+
 // All other GET requests not handled before will return the React app
 app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -181,9 +212,9 @@ try {
         const samples = inventory.filter(i => i.category === cat).slice(0, 3).map(i => i.name).join(', ');
         return `- ${cat} (${count} items): e.g., ${samples}`;
     }).join('\n');
-    console.log(`Loaded inventory: ${inventory.length} items across ${categories.length} categories`);
+    logEvent('INFO', 'SYSTEM', `Inventory loaded: ${inventory.length} items across ${categories.length} categories`);
 } catch (err) {
-    console.error('Could not read inventory.json:', err);
+    logEvent('ERROR', 'SYSTEM', 'Could not read inventory.json', err.message);
 }
 
 // --- Levenshtein Fuzzy Search ---
@@ -259,12 +290,32 @@ function extractPriceFilters(text) {
 
 function searchInventoryFuzzy(inventory, query) {
     const parsed = extractPriceFilters(query);
-    const terms = parsed.cleanQuery.toLowerCase().split(/\s+/).filter(t => t.length > 0);
+    const lowerQ = parsed.cleanQuery.toLowerCase();
+    const terms = lowerQ.split(/\s+/).filter(t => t.length > 0);
+
+    // Category intent detection: restrict category when query explicitly names one
+    const spiritTypes = ['whiskey', 'whisky', 'bourbon', 'scotch', 'vodka', 'gin', 'rum', 'tequila', 'mezcal', 'cognac', 'brandy', 'liqueur', 'cordial'];
+    const isSpiritQuery = spiritTypes.some(s => lowerQ.includes(s));
+    const isBeerQuery = /\bbeer\b|\bale\b|\bipa\b|\blager\b|\bstout\b|\bporter\b|\bbrewed\b|\bpilsner\b|\bbud\b/.test(lowerQ);
+    const isWineQuery = /\bwine\b|\bchardonnay\b|\bpinot\b|\bcabernet\b|\bmerlot\b|\brosé\b|\brose\b|\bchampagne\b|\bprosecco\b/.test(lowerQ);
 
     return inventory
         .filter(item => {
             if (parsed.min !== undefined && item.price < parsed.min) return false;
             if (parsed.max !== undefined && item.price > parsed.max) return false;
+
+            // Enforce category intent to prevent cross-category pollution
+            const cat = (item.category || '').toLowerCase();
+            if (isSpiritQuery && !isBeerQuery && !isWineQuery) {
+                // Spirit query: exclude beer and wine items
+                if (cat.includes('beer') || cat.includes('wine')) return false;
+            }
+            if (isBeerQuery && !isSpiritQuery) {
+                if (!cat.includes('beer')) return false;
+            }
+            if (isWineQuery && !isSpiritQuery) {
+                if (!cat.includes('wine')) return false;
+            }
             return true;
         })
         .map(item => {
@@ -284,7 +335,7 @@ function searchInventoryFuzzy(inventory, query) {
         })
         .filter(item => item.score > 0)
         .sort((a, b) => b.score - a.score)
-        .slice(0, 10);
+        .slice(0, 20);
 }
 
 // --- Build System Prompt with Browsing Context ---
@@ -339,6 +390,7 @@ Your Role as Co-Pilot:
 3. "Check the Back": If resultCount is 0, proactively offer a "hidden gem" alternative confirmable via searchInventory.
 4. "Semantic Interpretation": If the query is vague (e.g. "rainy night"), interpret the intent and call searchInventory with suitable styles (e.g. Stout, Spiced Rum).
 5. "Typing Awareness": If isTyping is true, keep your comments brief and wait for a pause before a larger recommendation.
+6. "Immediate Synthesis": After calling searchInventory, immediately synthesize the top 2-3 matched items into a verbal recommendation. Do not wait for the user to speak.
 `;
 }
 
@@ -375,7 +427,7 @@ wss.on('connection', async (clientWs) => {
     async function startGeminiSession(browsingContext) {
         try {
             const systemPrompt = buildSystemPrompt(browsingContext);
-            console.log('Starting Gemini session with context:', browsingContext || 'none');
+            logEvent('INFO', 'GEMINI', 'Starting Live session', { context: browsingContext });
 
             genaiSession = await ai.live.connect({
                 model: 'gemini-2.5-flash-native-audio-latest',
@@ -403,6 +455,14 @@ wss.on('connection', async (clientWs) => {
                                         query: {
                                             type: 'STRING',
                                             description: 'Search term (e.g., brand name, style like "IPA", food pairing like "steak", or category like "Wine")'
+                                        },
+                                        minPrice: {
+                                            type: 'NUMBER',
+                                            description: 'Minimum price filter in dollars (e.g. 50 for $50+). Optional.'
+                                        },
+                                        maxPrice: {
+                                            type: 'NUMBER',
+                                            description: 'Maximum price filter in dollars (e.g. 100 for up to $100). Optional.'
                                         }
                                     },
                                     required: ['query']
@@ -429,32 +489,6 @@ wss.on('connection', async (clientWs) => {
                     onopen: () => {
                         console.log('Connected to Gemini Live API');
                         clientWs.send(JSON.stringify({ type: 'status', message: 'connected to gemini' }));
-
-                        // Send a silent audio frame to bypass the Native Audio modality filter
-                        // Which otherwise throws "Cannot extract voices from a non-audio request" on text.
-                        try {
-                            const silence = new Uint8Array(32000).fill(0); // 1s of 16kHz PCM
-                            const base64Audio = Buffer.from(silence).toString('base64');
-                            genaiSession.sendRealtimeInput({ audio: { mimeType: 'audio/pcm;rate=16000', data: base64Audio } });
-                            console.log('Sent silent audio setup frame');
-                        } catch (e) {
-                            console.error('Failed to send silent frame:', e);
-                        }
-
-                        // Auto-greeting with context awareness
-                        setTimeout(() => {
-                            if (genaiSession) {
-                                let greeting = "Hello! Please introduce yourself as the SpiritSage Virtual Sommelier in one warm, sophisticated sentence.";
-                                if (browsingContext?.searchQuery) {
-                                    greeting = `The user is already searching for "${browsingContext.searchQuery}". Greet them briefly and offer your expert take on that selection. One sentence.`;
-                                } else if (browsingContext?.category && browsingContext.category !== 'All') {
-                                    greeting = `The user is browsing ${browsingContext.category}. Greet them and offer to guide them through our ${browsingContext.category} collection. One sentence.`;
-                                }
-                                genaiSession.sendClientContent({
-                                    turns: [{ role: 'user', parts: [{ text: greeting }] }]
-                                });
-                            }
-                        }, 500);
                     },
                     onmessage: (data) => {
                         // Handle tool calls
@@ -464,14 +498,27 @@ wss.on('connection', async (clientWs) => {
 
                                 if (call.name === 'searchInventory') {
                                     const q = call.args.query;
-                                    console.log(`Searching inventory for: "${q}"`);
-                                    const results = searchInventoryFuzzy(inventory, q);
-                                    console.log(`Found ${results.length} results`);
+                                    const minPrice = call.args.minPrice;
+                                    const maxPrice = call.args.maxPrice;
+
+                                    // Build a query string the frontend's extractPriceFilters can parse
+                                    let searchQuery = q;
+                                    if (minPrice !== undefined && maxPrice !== undefined) {
+                                        searchQuery = `${q} $${minPrice}-$${maxPrice}`;
+                                    } else if (minPrice !== undefined) {
+                                        searchQuery = `${q} over $${minPrice}`;
+                                    } else if (maxPrice !== undefined) {
+                                        searchQuery = `${q} under $${maxPrice}`;
+                                    }
+
+                                    logEvent('INFO', 'SEARCH', `Inventory tool called: "${searchQuery}"`);
+                                    const results = searchInventoryFuzzy(inventory, searchQuery);
+                                    logEvent('INFO', 'SEARCH', `Tool found ${results.length} matches`);
 
                                     // Relay search results to the frontend UI for live grid update
                                     clientWs.send(JSON.stringify({
                                         type: 'searchResults',
-                                        query: q,
+                                        query: searchQuery,  // Include price range so frontend filter activates
                                         results: results.map(r => ({
                                             name: r.name,
                                             price: r.price,
@@ -483,22 +530,24 @@ wss.on('connection', async (clientWs) => {
                                     }));
 
                                     try {
-                                        genaiSession.sendToolResponse([{
-                                            id: call.id || "manual-id",
-                                            name: "searchInventory",
-                                            response: {
-                                                results: results.map(r => ({
-                                                    name: r.name,
-                                                    price: r.price,
-                                                    category: r.category,
-                                                    style: r.style,
-                                                    flavorProfile: r.flavorProfile,
-                                                    description: r.description,
-                                                    image: r.image,
-                                                    tastingNotes: r.tastingNotes
-                                                }))
-                                            }
-                                        }]);
+                                        genaiSession.sendToolResponse({
+                                            functionResponses: [{
+                                                id: call.id,
+                                                name: "searchInventory",
+                                                response: {
+                                                    results: results.map(r => ({
+                                                        name: r.name,
+                                                        price: r.price,
+                                                        category: r.category,
+                                                        style: r.style,
+                                                        flavorProfile: r.flavorProfile,
+                                                        description: r.description,
+                                                        image: r.image,
+                                                        tastingNotes: r.tastingNotes
+                                                    }))
+                                                }
+                                            }]
+                                        });
                                     } catch (err) {
                                         console.error('Failed to send search toolResponse:', err);
                                     }
@@ -511,11 +560,13 @@ wss.on('connection', async (clientWs) => {
                                     }));
 
                                     try {
-                                        genaiSession.sendToolResponse([{
-                                            id: call.id || "manual-id",
-                                            name: "showDrinkImage",
-                                            response: { result: "image displayed successfully" }
-                                        }]);
+                                        genaiSession.sendToolResponse({
+                                            functionResponses: [{
+                                                id: call.id,
+                                                name: "showDrinkImage",
+                                                response: { result: "image displayed successfully" }
+                                            }]
+                                        });
                                     } catch (err) {
                                         console.error('Failed to send toolResponse:', err);
                                     }
@@ -538,9 +589,11 @@ wss.on('connection', async (clientWs) => {
                         }
                     },
                     onclose: (event) => {
-                        console.log(`Gemini Live API Connection Closed. Code: ${event?.code}, Reason: ${event?.reason || 'None'}`);
+                        const reason = event?.reason || 'No reason provided';
+                        const code = event?.code || 'No code';
+                        logEvent('WARN', 'GEMINI', `Connection closed. Code: ${code}, Reason: ${reason}`);
+                        
                         if (clientWs.readyState === clientWs.OPEN) {
-                            console.log('Closing client WebSocket due to Gemini closure');
                             clientWs.close(1000, 'Gemini connection closed');
                         }
                     }
@@ -548,6 +601,32 @@ wss.on('connection', async (clientWs) => {
             });
 
             activeSessions.set(clientWs, genaiSession);
+
+            // Send a silent audio frame to bypass the Native Audio modality filter
+            // This is done AFTER connect returns to ensure genaiSession is defined.
+            try {
+                const silence = new Uint8Array(32000).fill(0);
+                const base64Audio = Buffer.from(silence).toString('base64');
+                genaiSession.sendRealtimeInput({ audio: { mimeType: 'audio/pcm;rate=16000', data: base64Audio } });
+                console.log('Sent silent audio setup frame');
+            } catch (e) {
+                console.error('Failed to send silent frame:', e);
+            }
+
+            // Auto-greeting with context awareness
+            setTimeout(() => {
+                if (genaiSession) {
+                    let greeting = "Hello! Please introduce yourself as the SpiritSage Virtual Sommelier in one warm, sophisticated sentence.";
+                    if (browsingContext?.searchQuery) {
+                        greeting = `The user is already searching for "${browsingContext.searchQuery}". Greet them briefly and offer your expert take on that selection. One sentence.`;
+                    } else if (browsingContext?.category && browsingContext.category !== 'All') {
+                        greeting = `The user is browsing ${browsingContext.category}. Greet them and offer to guide them through our ${browsingContext.category} collection. One sentence.`;
+                    }
+                    genaiSession.sendClientContent({
+                        turns: [{ role: 'user', parts: [{ text: greeting }] }]
+                    });
+                }
+            }, 500);
         } catch (err) {
             console.error('Failed to connect to Gemini:', err);
             clientWs.send(JSON.stringify({ type: 'error', message: 'Failed to connect to Gemini Live API' }));
@@ -572,16 +651,19 @@ wss.on('connection', async (clientWs) => {
             if (parsed.type === 'realtimeInput') {
                 const inputOpts = {};
                 if (parsed.audio) {
-                    if (Math.random() < 0.05) {
-                        console.log(`Received audio chunk of Base64 length: ${parsed.audio.length}`);
+                    if (Math.random() < 0.01) {
+                        console.log(`Relaying buffered audio chunk. Length: ${parsed.audio.length}`);
                     }
                     inputOpts.audio = { mimeType: 'audio/pcm;rate=16000', data: parsed.audio };
                 }
                 if (parsed.video) {
-                    if (Math.random() < 0.2) {
-                        console.log(`Received video frame. Base64 length: ${parsed.video.length}`);
+                    // Reduce video frame frequency to 10% for better stability on the audio-native model
+                    if (Math.random() < 0.1) {
+                        if (Math.random() < 0.2) {
+                            console.log(`Received video frame. Base64 length: ${parsed.video.length}`);
+                        }
+                        inputOpts.video = { mimeType: parsed.videoMimeType || 'image/jpeg', data: parsed.video };
                     }
-                    inputOpts.video = { mimeType: parsed.videoMimeType || 'image/jpeg', data: parsed.video };
                 }
                 if (Object.keys(inputOpts).length > 0) {
                     try {
@@ -597,6 +679,14 @@ wss.on('connection', async (clientWs) => {
                         parts: parsed.parts
                     }]
                 });
+            } else if (parsed.type === 'interrupt') {
+                // Barge-in: user spoke while Gemini was talking.
+                // Send an empty client turn so Gemini knows the user's turn has started
+                // and it should stop generating and go back to listening.
+                console.log('Barge-in interrupt received. Notifying Gemini session.');
+                try {
+                    genaiSession.sendRealtimeInput({ audio: null }); // Signal end of model turn
+                } catch (e) { /* ignore */ }
             }
         } catch (err) {
             console.error('Error handling frontend message:', err);
@@ -604,7 +694,7 @@ wss.on('connection', async (clientWs) => {
     });
 
     clientWs.on('close', (code, reason) => {
-        console.log(`Frontend client disconnected. Code: ${code}, Reason: ${reason || 'None'}`);
+        logEvent('INFO', 'UI', `Frontend client disconnected. Code: ${code}, Reason: ${reason || 'No reason provided'}`);
         clearInterval(pingInterval);
         activeSessions.delete(clientWs);
         if (genaiSession && genaiSession.conn) {

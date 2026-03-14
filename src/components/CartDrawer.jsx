@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, ShoppingBag, Trash2, ChevronRight, AlertCircle, ShoppingCart } from 'lucide-react';
+import { getProductImage } from '../utils/imageUtils';
 
 const CartDrawer = ({ isOpen, onClose, cartItems, onRemoveItem, onClearCart }) => {
     const total = cartItems.reduce((sum, item) => sum + (item.price || 0), 0);
@@ -97,7 +98,7 @@ const CartDrawer = ({ isOpen, onClose, cartItems, onRemoveItem, onClearCart }) =
                             {cartItems.map((item, idx) => (
                                 <div key={`${item.name}-${idx}`} className="drawer-item" style={{ marginBottom: '16px' }}>
                                     <div className="drawer-item-img-wrap" style={{ width: '60px', height: '60px' }}>
-                                        <img src={item.image || 'https://images.unsplash.com/photo-1569488859134-24b2d490f23f?w=100&auto=format&fit=crop&q=80'} 
+                                        <img src={getProductImage(item)} 
                                              alt={item.name} 
                                              className="drawer-item-img" />
                                     </div>

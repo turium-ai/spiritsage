@@ -3,6 +3,7 @@ import { ArrowRight, TrendingUp, RefreshCw } from 'lucide-react';
 
 const TrendingSection = ({ onSelectTrend }) => {
   const [trends, setTrends] = useState([]);
+  const [lastFetch, setLastFetch] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -20,15 +21,29 @@ const TrendingSection = ({ onSelectTrend }) => {
         }
         
         let data = await response.json();
-        // Fallback robust parsing in case Gemini returned it slightly weirdly
-        if (typeof data === 'string') {
-          try { data = JSON.parse(data); } catch(e) {}
+        
+        // Handle both old array format (safety) and new object format
+        let trendsArray = [];
+        let fetchTime = null;
+
+        if (data && data.trends && Array.isArray(data.trends)) {
+          trendsArray = data.trends;
+          fetchTime = data.lastFetch;
+        } else if (Array.isArray(data)) {
+          trendsArray = data;
+        } else if (typeof data === 'string') {
+          try {
+            const parsed = JSON.parse(data);
+            trendsArray = parsed.trends || (Array.isArray(parsed) ? parsed : []);
+            fetchTime = parsed.lastFetch;
+          } catch(e) {}
         }
         
-        if (Array.isArray(data)) {
-           setTrends(data);
+        if (trendsArray.length > 0) {
+           setTrends(trendsArray);
+           if (fetchTime) setLastFetch(new Date(fetchTime));
         } else {
-           throw new Error("Invalid trend format received");
+           throw new Error("No trends discovered for this period");
         }
       } catch (err) {
         console.error('Error loading trends:', err);
@@ -61,8 +76,11 @@ const TrendingSection = ({ onSelectTrend }) => {
           <div className="trends-icon-wrapper">
             <TrendingUp size={24} />
           </div>
-          <h2>Trending on TikTok</h2>
-          <span className="trends-badge">Live Analysis</span>
+          <div className="flex-1">
+            <div className="flex items-center gap-3">
+              <h2>Trending</h2>
+            </div>
+          </div>
         </div>
 
         <div className="trends-grid">
